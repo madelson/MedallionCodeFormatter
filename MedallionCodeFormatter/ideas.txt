@@ -1,0 +1,31 @@
+﻿Syntax:
+* layout
+	* indentation: standard ws (tab for starterd)
+	* {, (, [ increment indent, closers close it
+	* leading . or op increases, semi closes
+	* technically if, else, etc also increment but we can ignore those for now
+* if, others must have {} braces
+* CRLF line endings
+* no double blank lines, extra spaces
+* allman braces
+* blank lines above some declarations, #directives
+* // and /// comment spacing
+* sort usings
+* nice ?: cascades
+* do-while formatting
+
+Semantics:
+* require "this."
+* no use of a.Equals(obj) unless a is this
+* always visibility modifier
+* aliases over builtins
+* variable, type, generic parameter naming conventions
+* precedence reliance
+* naming parameters when passing bool, numeric literals
+* use of => functions (C#6)
+* use of ?. (C# 6)
+* use of string interpolation with no repeat use of format indices (e. g. don't format "{0}+{0}") (C# 6)
+* readonly fields, const locals
+* remove (some) unused usings
+* names qualified only where needed
+* avoid "Attribute" in attribute applications
