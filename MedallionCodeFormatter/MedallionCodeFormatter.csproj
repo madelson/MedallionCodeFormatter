@@ -57,7 +57,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddressOfExpression.cs" />
     <Compile Include="ISyntaxRule.cs" />
     <Compile Include="LayoutProcessor.cs" />
     <Compile Include="Program.cs" />
