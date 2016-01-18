@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ISyntaxRule.cs" />
+    <Compile Include="LayoutEngine.cs" />
     <Compile Include="LayoutProcessor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

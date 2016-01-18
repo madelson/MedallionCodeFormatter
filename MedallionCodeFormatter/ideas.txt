@@ -13,19 +13,43 @@
 * sort usings
 * nice ?: cascades
 * do-while formatting
+* precedence/left-to-right reliance of numeric operators
 
 Semantics:
-* require "this."
+* require "this." (or only use it when necessary)
 * no use of a.Equals(obj) unless a is this
 * always visibility modifier
 * aliases over builtins
 * variable, type, generic parameter naming conventions
-* precedence reliance
 * naming parameters when passing bool, numeric literals
 * use of => functions (C#6)
 * use of ?. (C# 6)
 * use of string interpolation with no repeat use of format indices (e. g. don't format "{0}+{0}") (C# 6)
+* C#6 new property types and defaults
 * readonly fields, const locals
 * remove (some) unused usings
 * names qualified only where needed
 * avoid "Attribute" in attribute applications
+* remove unecessary else
+
+Lots more ideas here:
+http://blog.fogcreek.com/killing-off-wasabi-part-2/
+
+Non-layout algorithm:
+1. Do a first pass that adds annotations/collects info
+2. Do any global operations (e. g. renames). Hopefully this preserves annotations (we'll see)
+3. Use a single re-write pass to actually make all changes
+
+Layout algorithm:
+
+1. collapse to a single line with only leading trivia. Preserved multi-line trivia are kept as annotations on tokens.
+This is a good place to eliminate extra newlines around braces, parents, and brackets
+2. visit the node tree top to bottom:
+	- we can measure the node to determine if it is too long according to our target line width
+	- for some nodes, we also know that if parts of the node will be multi-line, the whole thing MUST be multi-line (e. g. argument lists)
+	- for some nodes, there are operations we can perform to decrease width at the expense of height (e. g. put each statement on its own line)
+	- for some nodes, we add indentation when visiting a sub part (e. g. inside a block)
+	- some nodes have multiple choices about what to do (e. g. foo.bar.baz = a.b.c could break either the left or the right)
+
+	- core operation: put a node/token on a new line. this is a no-op if the leading token is already on it's own line
+	- we'll want to create aggregate pseudonodes at times for things like long ./?. chains or binary ops with the same operator
