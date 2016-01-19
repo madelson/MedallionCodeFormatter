@@ -16,9 +16,7 @@ namespace MedallionCodeFormatter
         private int indentLevel;
 
         private static readonly SyntaxTriviaList NewLineList = SyntaxFactory.TriviaList(SyntaxFactory.LineFeed);
-
-        public const string MultiLineLeadingTriviaAnnotationKind = "MultiLineLeadingTrivia";
-
+        
         public override SyntaxNode VisitBlock(BlockSyntax node)
         {
             // todo the statement-#-based force-split rule should be wrapped in an annotation
@@ -34,7 +32,17 @@ namespace MedallionCodeFormatter
 
             return node;
         }
-        
+
+        public override SyntaxToken VisitToken(SyntaxToken token)
+        {
+            if (token.HasAnnotations(LayoutAnnotations.HasMultiLineLeadingTriviaKind))
+            {
+                // todo
+            }
+
+            return token;
+        }
+
         private TNode VisitAndMaybePlaceOnNewLine<TNode>(TNode node, bool force)
             where TNode : SyntaxNode
         {
@@ -90,11 +98,13 @@ namespace MedallionCodeFormatter
         private static bool ContainsMultiLineAnnotation(SyntaxNode node)
         {
             return node.ContainsAnnotations 
-                && node.DescendantTokens().Any(t => t.HasAnnotations(MultiLineLeadingTriviaAnnotationKind));
+                && node.DescendantTokens().Any(t => t.HasAnnotations(LayoutAnnotations.HasMultiLineLeadingTriviaKind));
         }
 
         private bool IsTooLong(SyntaxNode node)
         {
+            // TODO handle verbatim strings/$verbatim strings
+
             // assumes: (1) all tabs replaced with spaces
             // (2) no \r characters (or other weird 0-length things)
             // TODO normalize these away and put them back later
