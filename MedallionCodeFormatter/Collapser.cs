@@ -114,9 +114,17 @@ namespace MedallionCodeFormatter
 
             // get trivial into canonical form
             this.MergeSingleLineComments(triviaBuffer);
-            this.MergeNewLines(triviaBuffer, spacingPolicy);
-            
+            this.MergeNewLines(triviaBuffer, spacingPolicy, hadTrailingTrivia: hasTrailingTrivia);
 
+            // split into annotation and trailing
+            SyntaxAnnotation multiLineAnnotation;
+            SyntaxTriviaList leadingTrivia;
+            this.SplitOutMultiLineTriviaAndAddSpacing(triviaBuffer, spacingPolicy, out multiLineAnnotation, out leadingTrivia);
+
+            this.remappedLeadingTriviaAndAnnotation.Add(
+                next,
+                new KeyValuePair<SyntaxTriviaList, SyntaxAnnotation>(leadingTrivia, multiLineAnnotation)
+            );
         }
 
         private void BufferTrivia(List<SyntaxTrivia> buffer, SyntaxTrivia trivia)
@@ -221,8 +229,20 @@ namespace MedallionCodeFormatter
             }
         }
 
-        private void MergeNewLines(List<SyntaxTrivia> buffer, TokenSpacingPolicy spacingPolicy)
+        private void MergeNewLines(List<SyntaxTrivia> buffer, TokenSpacingPolicy spacingPolicy, bool hadTrailingTrivia)
         {
+            // if we have only one trivia entry, either:
+            // (1) it's a newline, in which case we can remove it unless it followed some trailing trivia
+            // (2) it's not a newline, in which case nothing will be removed so just return
+            if (buffer.Count == 1)
+            {
+                if (!hadTrailingTrivia && buffer[0].IsKind(SyntaxKind.EndOfLineTrivia))
+                {
+                    buffer.Clear();
+                }
+                return;
+            }
+
             var newLineStart = -1;
             for (var i = 0; i <= buffer.Count; ++i)
             {
@@ -232,7 +252,7 @@ namespace MedallionCodeFormatter
                 }
                 else if (newLineStart >= 0)
                 {
-                    // if we find more than the allowed # of newlines in a row, remove all but the first two
+                    // if we find more than the allowed # of newlines in a row, remove all but the first # allowed
                     var allowedNewLines = (newLineStart == 0 && (spacingPolicy | TokenSpacingPolicy.BanMultipleTrailingNewLines) == TokenSpacingPolicy.BanMultipleTrailingNewLines) ? 1
                         : (i == buffer.Count && (spacingPolicy | TokenSpacingPolicy.BanMultipleLeadingNewLines) == TokenSpacingPolicy.BanMultipleLeadingNewLines) ? 1
                         : 2;
@@ -246,6 +266,32 @@ namespace MedallionCodeFormatter
                     newLineStart = -1;
                 }
             }
+        }
+
+        private void SplitOutMultiLineTriviaAndAddSpacing(
+            IReadOnlyList<SyntaxTrivia> trivia,
+            TokenSpacingPolicy spacingPolicy,
+            out SyntaxAnnotation multiLineAnnotation,
+            out SyntaxTriviaList leadingTrivia)
+        {
+            for (var i = trivia.Count - 1; i >= 0; --i)
+            {
+                if (RoslynHelpers.IsMultiLine(trivia[i]))
+                {
+                    multiLineAnnotation = LayoutAnnotations.CreateMultiLineTriviaAnnotation(trivia.Take(i + 1));
+                    // if we have no more trivia after the multi-line trivia, then leading is empty. If we have
+                    // additional trivial, leading is that trivia plus a space
+                    leadingTrivia = trivia.Count > i + 1
+                        ? SyntaxFactory.TriviaList(trivia.Skip(i + 1).Concat(SingleWhitespaceList))
+                        : SyntaxTriviaList.Empty;
+                    return;
+                }
+            }
+
+            multiLineAnnotation = null;
+            leadingTrivia = trivia.Count > 0 ? SyntaxFactory.TriviaList(trivia.Concat(SingleWhitespaceList))
+                : (spacingPolicy & TokenSpacingPolicy.NeedsWhitespace) == TokenSpacingPolicy.NeedsWhitespace ? SingleWhitespaceList
+                : SyntaxTriviaList.Empty;
         }
 
         private enum SingleLineCommentMergeState
