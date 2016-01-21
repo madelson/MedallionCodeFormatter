@@ -61,6 +61,8 @@
     <Compile Include="ISyntaxRule.cs" />
     <Compile Include="LayoutAnnotations.cs" />
     <Compile Include="LayoutEngine.cs" />
+    <Compile Include="LayoutOptions.cs" />
+    <Compile Include="Uncollapser.cs" />
     <Compile Include="LayoutProcessor.cs" />
     <Compile Include="MultiLineConstructAnnotator.cs" />
     <Compile Include="Program.cs" />

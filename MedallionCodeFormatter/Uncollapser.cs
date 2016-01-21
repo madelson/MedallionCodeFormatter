@@ -11,17 +11,26 @@ namespace MedallionCodeFormatter
 {
     class Uncollapser : CSharpSyntaxRewriter
     {
-        private readonly int maxLength = 120;
-        private readonly int tabLength = 4;
+        private readonly LayoutOptions options;
         private int indentLevel;
-
-        private static readonly SyntaxTriviaList NewLineList = SyntaxFactory.TriviaList(SyntaxFactory.LineFeed);
         
+        private static readonly string[] MultiLineAnnotationKinds = new[]
+        {
+            LayoutAnnotations.HasMultiLineLeadingTriviaKind,
+            LayoutAnnotations.MultiLineConstructAnnotation.Kind,
+        };
+
+        private Uncollapser(LayoutOptions options) { this.options = options; }
+
+        public static SyntaxNode Uncollapse(SyntaxNode node, LayoutOptions options)
+        {
+            return new Uncollapser(options).Visit(node);
+        }
+
         public override SyntaxNode VisitBlock(BlockSyntax node)
         {
             // todo the statement-#-based force-split rule should be wrapped in an annotation
-            var force = this.IsTooLong(node) 
-                || ContainsMultiLineAnnotation(node);
+            var force =  node.ContainsMultiLineLayoutAnnotations() || this.IsTooLong(node);
 
             node = node.WithOpenBraceToken(this.VisitAndMaybePlaceOnNewLine(node.OpenBraceToken, force));
             using (this.Indent())
@@ -67,7 +76,8 @@ namespace MedallionCodeFormatter
 
             // add a leading newline, gobbling any non-unecessary whitespace
             return visited.WithLeadingTrivia(
-                NewLineList.AddRange(visited.LeadingTrivia.SkipWhile(s => s.IsKind(SyntaxKind.WhitespaceTrivia)))
+                this.GetNewLineWithIndentation()
+                    .AddRange(visited.LeadingTrivia.SkipWhile(s => s.IsKind(SyntaxKind.WhitespaceTrivia)))
             );
         }
 
@@ -93,12 +103,6 @@ namespace MedallionCodeFormatter
             {
                 --this.engine.indentLevel;
             }
-        }
-
-        private static bool ContainsMultiLineAnnotation(SyntaxNode node)
-        {
-            return node.ContainsAnnotations 
-                && node.DescendantTokens().Any(t => t.HasAnnotations(LayoutAnnotations.HasMultiLineLeadingTriviaKind));
         }
 
         private bool IsTooLong(SyntaxNode node)
@@ -132,7 +136,7 @@ namespace MedallionCodeFormatter
                 }
             }
 
-            if (previousLength > this.maxLength) { return true; }
+            if (previousLength > this.options.MaxLineWidth) { return true; }
 
             var currentLineLength = previousLength;
             foreach (var token in node.DescendantTokens())
@@ -141,7 +145,7 @@ namespace MedallionCodeFormatter
                 {
                     var leadingTriviaString = token.LeadingTrivia.ToFullString();
                     var trailingLength = leadingTriviaString.IndexOf('\n');
-                    if (currentLineLength + trailingLength > this.maxLength) { return true; }
+                    if (currentLineLength + trailingLength > this.options.MaxLineWidth) { return true; }
 
                     var leadingLength = leadingTriviaString.Length - leadingTriviaString.LastIndexOf('\n');
                     currentLineLength = leadingLength + token.Span.Length + token.TrailingTrivia.FullSpan.Length;
@@ -151,7 +155,7 @@ namespace MedallionCodeFormatter
                     currentLineLength += token.FullSpan.Length;
                 }
 
-                if (currentLineLength > this.maxLength) { return true; }
+                if (currentLineLength > this.options.MaxLineWidth) { return true; }
             }
 
             return false;
@@ -175,6 +179,19 @@ namespace MedallionCodeFormatter
             }
 
             return false;
+        }
+
+        private List<SyntaxTriviaList> newLineAndIndentationCache = new List<SyntaxTriviaList>();
+
+        private SyntaxTriviaList GetNewLineWithIndentation()
+        {
+            for (var i = this.newLineAndIndentationCache.Count; i <= this.indentLevel; ++i)
+            {
+                var trivia = SyntaxFactory.TriviaList(SyntaxFactory.LineFeed, SyntaxFactory.Whitespace(new string('\t', i)));
+                this.newLineAndIndentationCache.Add(trivia);
+            }
+            
+            return this.newLineAndIndentationCache[this.indentLevel];
         }
     }
 

@@ -13,7 +13,7 @@ namespace MedallionCodeFormatter
     {
         private MultiLineConstructAnnotator() { }
 
-        public SyntaxNode Annotate(SyntaxNode node)
+        public static SyntaxNode Annotate(SyntaxNode node)
         {
             return new MultiLineConstructAnnotator().Visit(node);
         }
