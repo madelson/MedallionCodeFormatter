@@ -9,7 +9,7 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace MedallionCodeFormatter
 {
-    class LayoutEngine : CSharpSyntaxRewriter
+    class Uncollapser : CSharpSyntaxRewriter
     {
         private readonly int maxLength = 120;
         private readonly int tabLength = 4;
@@ -85,9 +85,9 @@ namespace MedallionCodeFormatter
 
         private struct IndentationScope : IDisposable
         {
-            private readonly LayoutEngine engine;
+            private readonly Uncollapser engine;
 
-            public IndentationScope(LayoutEngine engine) { this.engine = engine; }
+            public IndentationScope(Uncollapser engine) { this.engine = engine; }
 
             public void Dispose()
             {

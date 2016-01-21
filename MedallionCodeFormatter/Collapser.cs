@@ -87,11 +87,6 @@ namespace MedallionCodeFormatter
 
             var spacingPolicy = GetSpacingPolicy(previous, next);
             
-            if (triviaBuffer.Count == 0 && (spacingPolicy | TokenSpacingPolicy.NeedsWhitespace) != TokenSpacingPolicy.NeedsWhitespace)
-            {
-                return; // no trivia, and nothing more to do!
-            }
-
             // check for trailing trivia. A single line comment is ok; everything else is not
             var hasTrailingTrivia = triviaBuffer.Count > 0
                 && (
@@ -149,7 +144,7 @@ namespace MedallionCodeFormatter
                     buffer.Add(leading);
                 }
 
-                buffer.Add(SyntaxFactory.Trivia(node.WithLeadingTrivia(SyntaxTriviaList.Empty).WithTrailingTrivia(SyntaxTriviaList.Empty));
+                buffer.Add(SyntaxFactory.Trivia(node.WithLeadingTrivia(SyntaxTriviaList.Empty).WithTrailingTrivia(SyntaxTriviaList.Empty)));
 
                 foreach (var trailing in node.GetTrailingTrivia())
                 {

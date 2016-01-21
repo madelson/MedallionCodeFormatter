@@ -16,5 +16,7 @@ namespace MedallionCodeFormatter
         {
             return new SyntaxAnnotation(HasMultiLineLeadingTriviaKind, SyntaxFactory.TriviaList(trivia).ToFullString());
         }
+
+        public static readonly SyntaxAnnotation MultiLineConstructAnnotation = new SyntaxAnnotation("MultiLineConstruct");
     }
 }
