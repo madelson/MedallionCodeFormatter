@@ -25,5 +25,10 @@ namespace MedallionCodeFormatter
                 )
                 .Any(not => not.HasAnnotations(not.IsToken ? HasMultiLineLeadingTriviaKind : MultiLineConstructAnnotation.Kind));    
         }
+
+        public static bool ContainsMultiLineLayoutAnnotations(this SyntaxToken token)
+        {
+            return token.HasAnnotations(HasMultiLineLeadingTriviaKind);
+        }
     }
 }

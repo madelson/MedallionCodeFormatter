@@ -29,8 +29,7 @@ namespace MedallionCodeFormatter
 
         public override SyntaxNode VisitBlock(BlockSyntax node)
         {
-            // todo the statement-#-based force-split rule should be wrapped in an annotation
-            var force =  node.ContainsMultiLineLayoutAnnotations() || this.IsTooLong(node);
+            var force = node.ContainsMultiLineLayoutAnnotations() || this.IsTooLong(node);
 
             node = node.WithOpenBraceToken(this.VisitAndMaybePlaceOnNewLine(node.OpenBraceToken, force));
             using (this.Indent())
@@ -38,6 +37,23 @@ namespace MedallionCodeFormatter
                 node = node.WithSyntaxList(b => b.Statements, s => this.VisitAndMaybePlaceOnNewLine(s, force), (b, list) => b.WithStatements(list));
             }
             node = node.WithCloseBraceToken(this.VisitAndMaybePlaceOnNewLine(node.CloseBraceToken, force));
+
+            return node;
+        }
+
+        public override SyntaxNode VisitParenthesizedExpression(ParenthesizedExpressionSyntax node)
+        {
+            node = node.WithOpenParenToken(this.VisitToken(node.OpenParenToken));
+
+            // now calculat force since we might have dropped just the open paren
+            var force = node.ContainsMultiLineLayoutAnnotations() || this.IsTooLong(node);
+
+            using (this.Indent())
+            {
+                node = node.WithExpression(this.VisitAndMaybePlaceOnNewLine(node.Expression, force));
+            }
+
+            node = node.WithCloseParenToken(this.VisitAndMaybePlaceOnNewLine(node.CloseParenToken, force));
 
             return node;
         }
