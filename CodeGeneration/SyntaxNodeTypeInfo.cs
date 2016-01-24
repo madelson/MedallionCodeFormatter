@@ -22,7 +22,7 @@ namespace CodeGeneration
                 {
                     var nodeAssembly = typeof(CompilationUnitSyntax).Assembly;
                     all = nodeAssembly.GetTypes()
-                        .Where(t => !t.IsAbstract && t.IsPublic && typeof(SyntaxNode).IsAssignableFrom(t))
+                        .Where(t => t.IsPublic && !t.IsAbstract && t.IsPublic && typeof(SyntaxNode).IsAssignableFrom(t))
                         .Select(t => new SyntaxNodeTypeInfo(t))
                         .OrderBy(t => t.NodeType.Name)
                         .ToArray();

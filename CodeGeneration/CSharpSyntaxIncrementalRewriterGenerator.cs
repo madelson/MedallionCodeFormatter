@@ -34,9 +34,10 @@ namespace CodeGeneration
             this.writer.WriteLine("\tinternal partial class CSharpSyntaxIncrementalRewriter : CSharpSyntaxVisitor<SyntaxNode>");
             this.writer.WriteLine("\t{");
 
-            foreach (var nodeType in SyntaxNodeTypeInfo.All)
+            for (var i = 0; i < SyntaxNodeTypeInfo.All.Count; ++i)
             {
-                this.GenerateVisitMethod(nodeType);
+                if (i != 0) { this.writer.WriteLine(); }
+                this.GenerateVisitMethod(SyntaxNodeTypeInfo.All[i]);
             }
 
             this.writer.WriteLine("\t}");
