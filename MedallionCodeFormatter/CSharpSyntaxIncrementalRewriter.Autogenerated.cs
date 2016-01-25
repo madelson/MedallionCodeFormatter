@@ -468,7 +468,7 @@ namespace MedallionCodeFormatter
 
 		public override SyntaxNode VisitDoStatement(DoStatementSyntax node)
 		{
-			node = node.WithDoKeyword(this.VisitToken(node.DoKeyword));
+            node = node.WithDoKeyword(this.VisitToken(node.DoKeyword));
 			node = node.WithStatement(this.TypedVisit(node.Statement));
 			node = node.WithWhileKeyword(this.VisitToken(node.WhileKeyword));
 			node = node.WithOpenParenToken(this.VisitToken(node.OpenParenToken));

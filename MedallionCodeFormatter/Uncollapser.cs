@@ -9,55 +9,25 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace MedallionCodeFormatter
 {
-    class Uncollapser : CSharpSyntaxRewriter
+    internal sealed partial class Uncollapser : CSharpSyntaxIncrementalRewriter
     {
         private readonly LayoutOptions options;
+        private readonly DropAndVisitVisitor cachedDropAndVisitVisitor;
+        private readonly Func<SyntaxToken, SyntaxToken> cachedDropAndVisitTokenFunc;
         private int indentLevel;
-        
-        private static readonly string[] MultiLineAnnotationKinds = new[]
-        {
-            LayoutAnnotations.HasMultiLineLeadingTriviaKind,
-            LayoutAnnotations.MultiLineConstructAnnotation.Kind,
-        };
 
-        private Uncollapser(LayoutOptions options) { this.options = options; }
+        private Uncollapser(LayoutOptions options)
+        {
+            this.options = options;
+            this.cachedDropAndVisitVisitor = new DropAndVisitVisitor(this);
+            this.cachedDropAndVisitTokenFunc = this.DropAndVisit;
+        }
 
         public static SyntaxNode Uncollapse(SyntaxNode node, LayoutOptions options)
         {
             return new Uncollapser(options).Visit(node);
         }
-
-        public override SyntaxNode VisitBlock(BlockSyntax node)
-        {
-            var force = node.ContainsMultiLineLayoutAnnotations() || this.IsTooLong(node);
-
-            node = node.WithOpenBraceToken(this.VisitAndMaybePlaceOnNewLine(node.OpenBraceToken, force));
-            using (this.Indent())
-            {
-                node = node.WithSyntaxList(b => b.Statements, s => this.VisitAndMaybePlaceOnNewLine(s, force), (b, list) => b.WithStatements(list));
-            }
-            node = node.WithCloseBraceToken(this.VisitAndMaybePlaceOnNewLine(node.CloseBraceToken, force));
-
-            return node;
-        }
-
-        public override SyntaxNode VisitParenthesizedExpression(ParenthesizedExpressionSyntax node)
-        {
-            node = node.WithOpenParenToken(this.VisitToken(node.OpenParenToken));
-
-            // now calculat force since we might have dropped just the open paren
-            var force = node.ContainsMultiLineLayoutAnnotations() || this.IsTooLong(node);
-
-            using (this.Indent())
-            {
-                node = node.WithExpression(this.VisitAndMaybePlaceOnNewLine(node.Expression, force));
-            }
-
-            node = node.WithCloseParenToken(this.VisitAndMaybePlaceOnNewLine(node.CloseParenToken, force));
-
-            return node;
-        }
-
+        
         public override SyntaxToken VisitToken(SyntaxToken token)
         {
             if (token.HasAnnotations(LayoutAnnotations.HasMultiLineLeadingTriviaKind))
@@ -68,20 +38,18 @@ namespace MedallionCodeFormatter
             return token;
         }
 
-        private TNode VisitAndMaybePlaceOnNewLine<TNode>(TNode node, bool force)
+        #region ---- DropAndVisit Methods ----
+        private TNode DropAndVisit<TNode>(TNode node)
             where TNode : SyntaxNode
         {
             var firstToken = node.GetFirstToken();
-            var visitedToken = this.VisitAndMaybePlaceOnNewLine(firstToken, force);
-            if (firstToken != visitedToken)
-            {
-                node = node.ReplaceToken(firstToken, visitedToken);
-            }
-
+            var visitedToken = this.DropAndVisit(firstToken);
+            node = node.ReplaceToken(firstToken, visitedToken);
+        
             return this.TypedVisit(node);
         }
 
-        private SyntaxToken VisitAndMaybePlaceOnNewLine(SyntaxToken token, bool force)
+        private SyntaxToken DropAndVisit(SyntaxToken token)
         {
             var visited = this.VisitToken(token);
             if (IsMultiLine(visited.LeadingTrivia))
@@ -97,12 +65,69 @@ namespace MedallionCodeFormatter
             );
         }
 
-        // todo extension
-        private TNode TypedVisit<TNode>(TNode node) where TNode : SyntaxNode
+        private TNode MaybeDropAndVisit<TNode>(TNode node, bool force)
+            where TNode : SyntaxNode
         {
-            return (TNode)this.Visit(node);
+            return force ? this.DropAndVisit(node) : this.TypedVisit(node);
         }
 
+        private SyntaxToken MaybeDropAndVisit(SyntaxToken token, bool force)
+        {
+            return force ? this.DropAndVisit(token) : this.VisitToken(token);
+        }
+        
+        private TNode MaybeDropAndVisit<TNode, TElement>(
+            TNode node, 
+            Func<TNode, SyntaxList<TElement>> getList, 
+            Func<TNode, SyntaxList<TElement>, TNode> withList, 
+            bool force)
+            where TNode : SyntaxNode
+            where TElement : SyntaxNode
+        {
+            return this.IncrementalVisitSyntaxList(node, getList, withList, force ? this.cachedDropAndVisitVisitor : null);
+        }
+
+        private TNode MaybeDropAndVisit<TNode, TElement>(
+            TNode node,
+            Func<TNode, SeparatedSyntaxList<TElement>> getList,
+            Func<TNode, SeparatedSyntaxList<TElement>, TNode> withList,
+            bool force)
+            where TNode : SyntaxNode
+            where TElement : SyntaxNode
+        {
+            return this.IncrementalVisitSeparatedSyntaxList(
+                node, 
+                getList, 
+                withList, 
+                force ? this.cachedDropAndVisitVisitor : null,
+                force ? this.cachedDropAndVisitTokenFunc : null
+            );
+        }
+
+        private TNode MaybeDropAndVisit<TNode>(
+            TNode node,
+            Func<TNode, SyntaxTokenList> getList,
+            Func<TNode, SyntaxTokenList, TNode> withList,
+            bool force)
+            where TNode : SyntaxNode
+        {
+            return this.IncrementalVisitSyntaxTokenList(node, getList, withList, force ? this.cachedDropAndVisitTokenFunc : null);
+        }
+
+        private sealed class DropAndVisitVisitor : CSharpSyntaxVisitor<SyntaxNode>
+        {
+            private readonly Uncollapser uncollapser;
+
+            public DropAndVisitVisitor(Uncollapser uncollapser) { this.uncollapser = uncollapser; }
+
+            public override SyntaxNode Visit(SyntaxNode node)
+            {
+                return this.uncollapser.DropAndVisit(node);
+            }
+        }
+        #endregion
+
+        #region ---- Indentation ----
         private IndentationScope Indent()
         {
             ++this.indentLevel;
@@ -121,8 +146,29 @@ namespace MedallionCodeFormatter
             }
         }
 
+        private List<SyntaxTriviaList> newLineAndIndentationCache = new List<SyntaxTriviaList>();
+
+        private SyntaxTriviaList GetNewLineWithIndentation()
+        {
+            for (var i = this.newLineAndIndentationCache.Count; i <= this.indentLevel; ++i)
+            {
+                var trivia = SyntaxFactory.TriviaList(SyntaxFactory.LineFeed, SyntaxFactory.Whitespace(new string('\t', i)));
+                this.newLineAndIndentationCache.Add(trivia);
+            }
+
+            return this.newLineAndIndentationCache[this.indentLevel];
+        }
+        #endregion
+
+        #region ---- Measurement ----
+        private bool IsTooLongOrHasMultiLineAnnotations(SyntaxNode node)
+        {
+            return node.ContainsMultiLineLayoutAnnotations() || this.IsTooLong(node);
+        }
+
         private bool IsTooLong(SyntaxNode node)
         {
+            // TODO dynamic programming cache
             // TODO handle verbatim strings/$verbatim strings
 
             // assumes: (1) all tabs replaced with spaces
@@ -196,44 +242,6 @@ namespace MedallionCodeFormatter
 
             return false;
         }
-
-        private List<SyntaxTriviaList> newLineAndIndentationCache = new List<SyntaxTriviaList>();
-
-        private SyntaxTriviaList GetNewLineWithIndentation()
-        {
-            for (var i = this.newLineAndIndentationCache.Count; i <= this.indentLevel; ++i)
-            {
-                var trivia = SyntaxFactory.TriviaList(SyntaxFactory.LineFeed, SyntaxFactory.Whitespace(new string('\t', i)));
-                this.newLineAndIndentationCache.Add(trivia);
-            }
-            
-            return this.newLineAndIndentationCache[this.indentLevel];
-        }
-    }
-
-    public static class Extensions
-    {
-        public static TNode WithSyntaxList<TNode, TElementNode>(
-            this TNode node,
-            Func<TNode, SyntaxList<TElementNode>> getList,
-            Func<TElementNode, TElementNode> transformElement,
-            Func<TNode, SyntaxList<TElementNode>, TNode> withList)
-            where TNode : SyntaxNode
-            where TElementNode : SyntaxNode
-        {
-            var listCount = getList(node).Count;
-            for (var i = 0; i < listCount; ++i)
-            {
-                var list = getList(node);
-                var element = list[i];
-                var transformed = transformElement(element);
-                if (transformed != element)
-                {
-                    node = withList(node, list.Replace(element, transformed));
-                }
-            }
-
-            return node;
-        }
+        #endregion
     }
 }

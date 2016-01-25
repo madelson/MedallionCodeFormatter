@@ -73,6 +73,7 @@
     <Compile Include="SyntaxLevelRewriter.cs" />
     <Compile Include="SyntaxRules\BraceNewlineRule.cs" />
     <Compile Include="SyntaxRules\IfElseBraceRule.cs" />
+    <Compile Include="Uncollapser.VisitOverrides.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

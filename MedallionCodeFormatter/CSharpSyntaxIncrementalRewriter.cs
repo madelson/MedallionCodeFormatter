@@ -1,4 +1,5 @@
 ﻿using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,29 +10,31 @@ namespace MedallionCodeFormatter
 {
     internal partial class CSharpSyntaxIncrementalRewriter
     {
-        public virtual SyntaxToken VisitToken(SyntaxToken token) => token;
-    
-        public virtual TNode TypedVisit<TNode>(TNode node) where TNode : SyntaxNode
+        private readonly Func<SyntaxToken, SyntaxToken> cachedVisitTokenFunc;
+
+        public CSharpSyntaxIncrementalRewriter()
         {
-            return (TNode)this.Visit(node);
+            this.cachedVisitTokenFunc = this.VisitToken;
         }
+
+        public virtual SyntaxToken VisitToken(SyntaxToken token) => token;
 
         public TNode IncrementalVisitSyntaxList<TNode, TElement>(
             TNode node, 
             Func<TNode, SyntaxList<TElement>> getList, 
             Func<TNode, SyntaxList<TElement>, TNode> withList,
-            Func<CSharpSyntaxIncrementalRewriter, TElement, TElement> visit = null)
+            CSharpSyntaxVisitor<SyntaxNode> elementVisitor = null)
             where TNode : SyntaxNode
             where TElement : SyntaxNode
         {
-            var visitFunc = visit ?? ((rewriter, e) => rewriter.TypedVisit(e));
+            elementVisitor = elementVisitor ?? this;
 
             var count = getList(node).Count;
             for (var i = 0; i < count; ++i)
             {
                 var list = getList(node);
                 var element = list[i];
-                var visited = visitFunc(this, element);
+                var visited = elementVisitor.TypedVisit(element);
                 node = withList(node, list.Replace(element, visited));
             }
 
@@ -42,25 +45,25 @@ namespace MedallionCodeFormatter
             TNode node,
             Func<TNode, SeparatedSyntaxList<TElement>> getList,
             Func<TNode, SeparatedSyntaxList<TElement>, TNode> withList,
-            Func<CSharpSyntaxIncrementalRewriter, TElement, TElement> visitNode = null,
-            Func<CSharpSyntaxIncrementalRewriter, SyntaxToken, SyntaxToken> visitToken = null)
+            CSharpSyntaxVisitor<SyntaxNode> elementVisitor = null,
+            Func<SyntaxToken, SyntaxToken> separatorVisitor = null)
             where TNode : SyntaxNode
             where TElement : SyntaxNode
         {
-            var visitNodeFunc = visitNode ?? ((rewriter, e) => rewriter.TypedVisit(e));
-            var visitTokenFunc = visitToken ?? ((rewriter, t) => rewriter.VisitToken(t));
+            elementVisitor = elementVisitor ?? this;
+            separatorVisitor = separatorVisitor ?? this.cachedVisitTokenFunc;
 
             var count = getList(node).Count;
             for (var i = 0; i < count; ++i)
             {
                 var list = getList(node);
                 var element = list[i];
-                var visitedNode = visitNodeFunc(this, element);
+                var visitedNode = elementVisitor.TypedVisit(element);
                 node = withList(node, list.Replace(element, visitedNode));
 
                 list = getList(node);
                 var separator = list.GetSeparator(i);
-                var visitedSeparator = visitTokenFunc(this, separator);
+                var visitedSeparator = separatorVisitor(separator);
                 node = withList(node, list.ReplaceSeparator(separator, visitedSeparator));
             }
 
@@ -71,20 +74,29 @@ namespace MedallionCodeFormatter
             TNode node,
             Func<TNode, SyntaxTokenList> getList,
             Func<TNode, SyntaxTokenList, TNode> withList,
-            Func<CSharpSyntaxIncrementalRewriter, SyntaxToken, SyntaxToken> visit = null)
+            Func<SyntaxToken, SyntaxToken> elementVisitor = null)
         {
-            var visitFunc = visit ?? ((rewriter, e) => rewriter.VisitToken(e));
+            elementVisitor = elementVisitor ?? this.cachedVisitTokenFunc;
 
             var count = getList(node).Count;
             for (var i = 0; i < count; ++i)
             {
                 var list = getList(node);
                 var element = list[i];
-                var visited = visitFunc(this, element);
+                var visited = elementVisitor(element);
                 node = withList(node, list.Replace(element, visited));
             }
 
             return node;
+        }
+    }
+
+    internal static class VisitorHelpers
+    {
+        public static TNode TypedVisit<TNode>(this CSharpSyntaxVisitor<SyntaxNode> visitor, TNode node)
+            where TNode : SyntaxNode
+        {
+            return (TNode)visitor.Visit(node);
         }
     }
 }

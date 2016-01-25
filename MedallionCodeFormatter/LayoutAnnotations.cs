@@ -30,5 +30,10 @@ namespace MedallionCodeFormatter
         {
             return token.HasAnnotations(HasMultiLineLeadingTriviaKind);
         }
+
+        public static bool HasMultiLineConstructAnnotation(this SyntaxNode node)
+        {
+            return node.ContainsAnnotations && node.HasAnnotations(MultiLineConstructAnnotation.Kind);
+        }
     }
 }
