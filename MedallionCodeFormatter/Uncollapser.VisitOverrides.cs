@@ -16,6 +16,7 @@ namespace MedallionCodeFormatter
         //arrayrankspecifier
         //assignment(there are a few other things like this, e.g.attributeargument, although only assignment really has the option of breaking the left side)
         //attributeargumentlist
+        //attributelist
         //binaryexpression
         //block
         //bracketedargumentlist
@@ -33,7 +34,29 @@ namespace MedallionCodeFormatter
         //enumdeclaration
         //eventdeclaration(attribute lists)
         //eventfielddeclaration
-        // todo
+        //fielddeclaration
+        //incompletemember
+        //indexerdeclaration
+        //initializer
+        //interpolation(for long interps)?
+        //joinclause
+        //joinintoclause
+        //memberaccessexpression
+        //namespacedeclaration
+        //objectcreationexpression(to do initializer first)
+        //operatordeclaration
+        //orderbyclause(list of orderings)
+        //parameterlist
+        //parenthesizedexpression
+        //parenthesizedlambda
+        //propertydeclaration
+        //queryexpression
+        //switchstatement
+        //trystatement(catches/finally on new lines if any are)
+        //ifstatement, usingstatement, forstatement, foreachstatement(because of the parens!!)
+        //variabledeclaration
+        //variabledeclarator
+        //whilestatement
 
         public override SyntaxNode VisitBlock(BlockSyntax node)
         {
