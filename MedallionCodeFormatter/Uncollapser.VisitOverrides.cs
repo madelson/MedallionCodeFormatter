@@ -88,7 +88,8 @@ namespace MedallionCodeFormatter
             );
         }
 
-        private SyntaxNode VisitBlockLike<TNode, TElement>(
+        // TODO break up into three methods for each of single node body, separated body, and list body
+        private TNode VisitBlockLike<TNode, TElement>(
             TNode node,
             Func<TNode, SyntaxToken> getOpenToken,
             Func<TNode, SyntaxToken, TNode> withOpenToken,
@@ -101,33 +102,20 @@ namespace MedallionCodeFormatter
             where TNode : SyntaxNode
             where TElement : SyntaxNode
         {
-            var forceTokens = this.IsTooLongOrHasMultiLineAnnotations(node);
-
-            // first, we visit the open and close tokens to see if they drop
-
-            var openToken = getOpenToken(node);
-            var visitedOpenToken = canDropOpenToken ?? openToken.IsKind(SyntaxKind.OpenBraceToken)
-                ? this.MaybeDropAndVisit(openToken, forceTokens)
-                : this.VisitToken(openToken);
-            node = withOpenToken(node, visitedOpenToken);
-
-            var closeToken = getCloseToken(node);
-            var visitedCloseToken = canDropCloseToken ?? true
-                ? this.MaybeDropAndVisit(closeToken, forceTokens)
-                : this.VisitToken(closeToken);
-            node = withCloseToken(node, visitedCloseToken);
+            bool forceBody;
+            node = this.VisitTokensOfBlockLike(
+                node,
+                getOpenToken,
+                withOpenToken,
+                n => SyntaxFactory.NodeOrTokenList(getBody(n)),
+                getCloseToken,
+                withCloseToken,
+                canDropOpenToken,
+                canDropCloseToken,
+                out forceBody
+            );
 
             var body = getBody(node);
-            // we force the body to drop if: 
-            var forceBody =
-                // the close token dropped
-                IsMultiLine(getCloseToken(node).LeadingTrivia)
-                // or the top level node is a multi-line construct (e. g. block with 2+ statements)
-                || node.HasMultiLineConstructAnnotation()
-                // or any part of the body is is multi-line
-                || body.Any(not => not.IsNode ? not.AsNode().ContainsMultiLineLayoutAnnotations() : not.AsToken().ContainsMultiLineLayoutAnnotations())
-                // or the node is still too long
-                || this.IsTooLong(node);
             using (this.Indent())
             {
                 TElement singleNode;
@@ -150,6 +138,48 @@ namespace MedallionCodeFormatter
                     throw new InvalidOperationException();
                 }
             }
+
+            return node;
+        }
+
+        private TNode VisitTokensOfBlockLike<TNode>(
+            TNode node,
+            Func<TNode, SyntaxToken> getOpenToken,
+            Func<TNode, SyntaxToken, TNode> withOpenToken,
+            Func<TNode, SyntaxNodeOrTokenList> getBody,
+            Func<TNode, SyntaxToken> getCloseToken,
+            Func<TNode, SyntaxToken, TNode> withCloseToken,
+            bool? canDropOpenToken,
+            bool? canDropCloseToken,
+            out bool forceBody)
+            where TNode : SyntaxNode
+        {
+            var forceTokens = this.IsTooLongOrHasMultiLineAnnotations(node);
+
+            // first, we visit the open and close tokens to see if they drop
+
+            var openToken = getOpenToken(node);
+            var visitedOpenToken = canDropOpenToken ?? openToken.IsKind(SyntaxKind.OpenBraceToken)
+                ? this.MaybeDropAndVisit(openToken, forceTokens)
+                : this.VisitToken(openToken);
+            node = withOpenToken(node, visitedOpenToken);
+
+            var closeToken = getCloseToken(node);
+            var visitedCloseToken = canDropCloseToken ?? true
+                ? this.MaybeDropAndVisit(closeToken, forceTokens)
+                : this.VisitToken(closeToken);
+            node = withCloseToken(node, visitedCloseToken);
+            
+            // we force the body to drop if: 
+            forceBody =
+                // the close token dropped
+                IsMultiLine(getCloseToken(node).LeadingTrivia)
+                // or the top level node is a multi-line construct (e. g. block with 2+ statements)
+                || node.HasMultiLineConstructAnnotation()
+                // or any part of the body is is multi-line
+                || getBody(node).Any(not => not.IsNode ? not.AsNode().ContainsMultiLineLayoutAnnotations() : not.AsToken().ContainsMultiLineLayoutAnnotations())
+                // or the node is still too long
+                || this.IsTooLong(node);
 
             return node;
         }
