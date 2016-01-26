@@ -53,18 +53,15 @@ namespace MedallionCodeFormatter
             elementVisitor = elementVisitor ?? this;
             separatorVisitor = separatorVisitor ?? this.cachedVisitTokenFunc;
 
-            var count = getList(node).Count;
+            var count = getList(node).GetWithSeparators().Count;
             for (var i = 0; i < count; ++i)
             {
-                var list = getList(node);
+                var list = getList(node).GetWithSeparators();
                 var element = list[i];
-                var visitedNode = elementVisitor.TypedVisit(element);
-                node = withList(node, list.Replace(element, visitedNode));
-
-                list = getList(node);
-                var separator = list.GetSeparator(i);
-                var visitedSeparator = separatorVisitor(separator);
-                node = withList(node, list.ReplaceSeparator(separator, visitedSeparator));
+                var visited = element.IsNode
+                    ? elementVisitor.TypedVisit(element.AsNode())
+                    : (SyntaxNodeOrToken)separatorVisitor(element.AsToken());
+                node = withList(node, SyntaxFactory.SeparatedList<TElement>(list.Replace(element, visited)));
             }
 
             return node;
