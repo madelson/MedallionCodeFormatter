@@ -44,6 +44,7 @@ namespace CodeGeneration
 
         private void Generate(SyntaxNodeTypeInfo typeInfo)
         {
+            this.writer.WriteLine($"\t#region ---- {typeInfo.NodeType.Name} ----");
             this.writer.WriteLine($"\tinternal static class {typeInfo.NodeType.Name.Replace("Syntax", string.Empty)}Info");
             this.writer.WriteLine("\t{");
 
@@ -88,6 +89,7 @@ namespace CodeGeneration
             this.writer.WriteLine($"\t\tpublic static IReadOnlyList<{propertiesListElementType}> Properties => PropertiesArray;");
 
             this.writer.WriteLine("\t}");
+            this.writer.WriteLine("\t#endregion");
         }
 
         private static string GetName(Type type)

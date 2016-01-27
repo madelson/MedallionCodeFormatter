@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 namespace MedallionCodeFormatter
 {
+	#region ---- AccessorDeclarationSyntax ----
 	internal static class AccessorDeclarationInfo
 	{
 		private static readonly SyntaxNodeProperty<AccessorDeclarationSyntax, SyntaxList<AttributeListSyntax>> AttributeListsProperty = new ListProperty<AccessorDeclarationSyntax, AttributeListSyntax>("AttributeLists", n => n.AttributeLists, (n, v) => n.WithAttributeLists(v));
@@ -31,7 +32,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<AccessorDeclarationSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- AccessorListSyntax ----
 	internal static class AccessorListInfo
 	{
 		private static readonly SyntaxNodeProperty<AccessorListSyntax, SyntaxToken> OpenBraceTokenProperty = new TokenProperty<AccessorListSyntax>("OpenBraceToken", n => n.OpenBraceToken, (n, v) => n.WithOpenBraceToken(v));
@@ -50,7 +53,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<AccessorListSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- AliasQualifiedNameSyntax ----
 	internal static class AliasQualifiedNameInfo
 	{
 		private static readonly SyntaxNodeProperty<AliasQualifiedNameSyntax, IdentifierNameSyntax> AliasProperty = new NodeProperty<AliasQualifiedNameSyntax, IdentifierNameSyntax>("Alias", n => n.Alias, (n, v) => n.WithAlias(v));
@@ -69,7 +74,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<AliasQualifiedNameSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- AnonymousMethodExpressionSyntax ----
 	internal static class AnonymousMethodExpressionInfo
 	{
 		private static readonly SyntaxNodeProperty<AnonymousMethodExpressionSyntax, SyntaxToken> AsyncKeywordProperty = new TokenProperty<AnonymousMethodExpressionSyntax>("AsyncKeyword", n => n.AsyncKeyword, (n, v) => n.WithAsyncKeyword(v));
@@ -92,7 +99,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<AnonymousMethodExpressionSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- AnonymousObjectCreationExpressionSyntax ----
 	internal static class AnonymousObjectCreationExpressionInfo
 	{
 		private static readonly SyntaxNodeProperty<AnonymousObjectCreationExpressionSyntax, SyntaxToken> NewKeywordProperty = new TokenProperty<AnonymousObjectCreationExpressionSyntax>("NewKeyword", n => n.NewKeyword, (n, v) => n.WithNewKeyword(v));
@@ -115,7 +124,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<AnonymousObjectCreationExpressionSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- AnonymousObjectMemberDeclaratorSyntax ----
 	internal static class AnonymousObjectMemberDeclaratorInfo
 	{
 		private static readonly SyntaxNodeProperty<AnonymousObjectMemberDeclaratorSyntax, NameEqualsSyntax> NameEqualsProperty = new NodeProperty<AnonymousObjectMemberDeclaratorSyntax, NameEqualsSyntax>("NameEquals", n => n.NameEquals, (n, v) => n.WithNameEquals(v));
@@ -130,7 +141,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<AnonymousObjectMemberDeclaratorSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- ArgumentListSyntax ----
 	internal static class ArgumentListInfo
 	{
 		private static readonly SyntaxNodeProperty<ArgumentListSyntax, SyntaxToken> OpenParenTokenProperty = new TokenProperty<ArgumentListSyntax>("OpenParenToken", n => n.OpenParenToken, (n, v) => n.WithOpenParenToken(v));
@@ -149,7 +162,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<ArgumentListSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- ArgumentSyntax ----
 	internal static class ArgumentInfo
 	{
 		private static readonly SyntaxNodeProperty<ArgumentSyntax, NameColonSyntax> NameColonProperty = new NodeProperty<ArgumentSyntax, NameColonSyntax>("NameColon", n => n.NameColon, (n, v) => n.WithNameColon(v));
@@ -168,7 +183,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<ArgumentSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- ArrayCreationExpressionSyntax ----
 	internal static class ArrayCreationExpressionInfo
 	{
 		private static readonly SyntaxNodeProperty<ArrayCreationExpressionSyntax, SyntaxToken> NewKeywordProperty = new TokenProperty<ArrayCreationExpressionSyntax>("NewKeyword", n => n.NewKeyword, (n, v) => n.WithNewKeyword(v));
@@ -187,7 +204,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<ArrayCreationExpressionSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- ArrayRankSpecifierSyntax ----
 	internal static class ArrayRankSpecifierInfo
 	{
 		private static readonly SyntaxNodeProperty<ArrayRankSpecifierSyntax, SyntaxToken> OpenBracketTokenProperty = new TokenProperty<ArrayRankSpecifierSyntax>("OpenBracketToken", n => n.OpenBracketToken, (n, v) => n.WithOpenBracketToken(v));
@@ -206,7 +225,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<ArrayRankSpecifierSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- ArrayTypeSyntax ----
 	internal static class ArrayTypeInfo
 	{
 		private static readonly SyntaxNodeProperty<ArrayTypeSyntax, TypeSyntax> ElementTypeProperty = new NodeProperty<ArrayTypeSyntax, TypeSyntax>("ElementType", n => n.ElementType, (n, v) => n.WithElementType(v));
@@ -221,7 +242,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<ArrayTypeSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- ArrowExpressionClauseSyntax ----
 	internal static class ArrowExpressionClauseInfo
 	{
 		private static readonly SyntaxNodeProperty<ArrowExpressionClauseSyntax, SyntaxToken> ArrowTokenProperty = new TokenProperty<ArrowExpressionClauseSyntax>("ArrowToken", n => n.ArrowToken, (n, v) => n.WithArrowToken(v));
@@ -236,7 +259,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<ArrowExpressionClauseSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- AssignmentExpressionSyntax ----
 	internal static class AssignmentExpressionInfo
 	{
 		private static readonly SyntaxNodeProperty<AssignmentExpressionSyntax, ExpressionSyntax> LeftProperty = new NodeProperty<AssignmentExpressionSyntax, ExpressionSyntax>("Left", n => n.Left, (n, v) => n.WithLeft(v));
@@ -255,7 +280,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<AssignmentExpressionSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- AttributeArgumentListSyntax ----
 	internal static class AttributeArgumentListInfo
 	{
 		private static readonly SyntaxNodeProperty<AttributeArgumentListSyntax, SyntaxToken> OpenParenTokenProperty = new TokenProperty<AttributeArgumentListSyntax>("OpenParenToken", n => n.OpenParenToken, (n, v) => n.WithOpenParenToken(v));
@@ -274,7 +301,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<AttributeArgumentListSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- AttributeArgumentSyntax ----
 	internal static class AttributeArgumentInfo
 	{
 		private static readonly SyntaxNodeProperty<AttributeArgumentSyntax, NameEqualsSyntax> NameEqualsProperty = new NodeProperty<AttributeArgumentSyntax, NameEqualsSyntax>("NameEquals", n => n.NameEquals, (n, v) => n.WithNameEquals(v));
@@ -293,7 +322,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<AttributeArgumentSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- AttributeListSyntax ----
 	internal static class AttributeListInfo
 	{
 		private static readonly SyntaxNodeProperty<AttributeListSyntax, SyntaxToken> OpenBracketTokenProperty = new TokenProperty<AttributeListSyntax>("OpenBracketToken", n => n.OpenBracketToken, (n, v) => n.WithOpenBracketToken(v));
@@ -316,7 +347,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<AttributeListSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- AttributeSyntax ----
 	internal static class AttributeInfo
 	{
 		private static readonly SyntaxNodeProperty<AttributeSyntax, NameSyntax> NameProperty = new NodeProperty<AttributeSyntax, NameSyntax>("Name", n => n.Name, (n, v) => n.WithName(v));
@@ -331,7 +364,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<AttributeSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- AttributeTargetSpecifierSyntax ----
 	internal static class AttributeTargetSpecifierInfo
 	{
 		private static readonly SyntaxNodeProperty<AttributeTargetSpecifierSyntax, SyntaxToken> IdentifierProperty = new TokenProperty<AttributeTargetSpecifierSyntax>("Identifier", n => n.Identifier, (n, v) => n.WithIdentifier(v));
@@ -346,7 +381,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<AttributeTargetSpecifierSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- AwaitExpressionSyntax ----
 	internal static class AwaitExpressionInfo
 	{
 		private static readonly SyntaxNodeProperty<AwaitExpressionSyntax, SyntaxToken> AwaitKeywordProperty = new TokenProperty<AwaitExpressionSyntax>("AwaitKeyword", n => n.AwaitKeyword, (n, v) => n.WithAwaitKeyword(v));
@@ -361,7 +398,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<AwaitExpressionSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- BadDirectiveTriviaSyntax ----
 	internal static class BadDirectiveTriviaInfo
 	{
 		private static readonly SyntaxNodeProperty<BadDirectiveTriviaSyntax, SyntaxToken> HashTokenProperty = new TokenProperty<BadDirectiveTriviaSyntax>("HashToken", n => n.HashToken, (n, v) => n.WithHashToken(v));
@@ -380,7 +419,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<BadDirectiveTriviaSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- BaseExpressionSyntax ----
 	internal static class BaseExpressionInfo
 	{
 		private static readonly SyntaxNodeProperty<BaseExpressionSyntax, SyntaxToken> TokenProperty = new TokenProperty<BaseExpressionSyntax>("Token", n => n.Token, (n, v) => n.WithToken(v));
@@ -391,7 +432,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<BaseExpressionSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- BaseListSyntax ----
 	internal static class BaseListInfo
 	{
 		private static readonly SyntaxNodeProperty<BaseListSyntax, SyntaxToken> ColonTokenProperty = new TokenProperty<BaseListSyntax>("ColonToken", n => n.ColonToken, (n, v) => n.WithColonToken(v));
@@ -406,7 +449,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<BaseListSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- BinaryExpressionSyntax ----
 	internal static class BinaryExpressionInfo
 	{
 		private static readonly SyntaxNodeProperty<BinaryExpressionSyntax, ExpressionSyntax> LeftProperty = new NodeProperty<BinaryExpressionSyntax, ExpressionSyntax>("Left", n => n.Left, (n, v) => n.WithLeft(v));
@@ -425,7 +470,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<BinaryExpressionSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- BlockSyntax ----
 	internal static class BlockInfo
 	{
 		private static readonly SyntaxNodeProperty<BlockSyntax, SyntaxToken> OpenBraceTokenProperty = new TokenProperty<BlockSyntax>("OpenBraceToken", n => n.OpenBraceToken, (n, v) => n.WithOpenBraceToken(v));
@@ -444,7 +491,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<BlockSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- BracketedArgumentListSyntax ----
 	internal static class BracketedArgumentListInfo
 	{
 		private static readonly SyntaxNodeProperty<BracketedArgumentListSyntax, SyntaxToken> OpenBracketTokenProperty = new TokenProperty<BracketedArgumentListSyntax>("OpenBracketToken", n => n.OpenBracketToken, (n, v) => n.WithOpenBracketToken(v));
@@ -463,7 +512,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<BracketedArgumentListSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- BracketedParameterListSyntax ----
 	internal static class BracketedParameterListInfo
 	{
 		private static readonly SyntaxNodeProperty<BracketedParameterListSyntax, SyntaxToken> OpenBracketTokenProperty = new TokenProperty<BracketedParameterListSyntax>("OpenBracketToken", n => n.OpenBracketToken, (n, v) => n.WithOpenBracketToken(v));
@@ -482,7 +533,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<BracketedParameterListSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- BreakStatementSyntax ----
 	internal static class BreakStatementInfo
 	{
 		private static readonly SyntaxNodeProperty<BreakStatementSyntax, SyntaxToken> BreakKeywordProperty = new TokenProperty<BreakStatementSyntax>("BreakKeyword", n => n.BreakKeyword, (n, v) => n.WithBreakKeyword(v));
@@ -497,7 +550,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<BreakStatementSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- CaseSwitchLabelSyntax ----
 	internal static class CaseSwitchLabelInfo
 	{
 		private static readonly SyntaxNodeProperty<CaseSwitchLabelSyntax, SyntaxToken> KeywordProperty = new TokenProperty<CaseSwitchLabelSyntax>("Keyword", n => n.Keyword, (n, v) => n.WithKeyword(v));
@@ -516,7 +571,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<CaseSwitchLabelSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- CastExpressionSyntax ----
 	internal static class CastExpressionInfo
 	{
 		private static readonly SyntaxNodeProperty<CastExpressionSyntax, SyntaxToken> OpenParenTokenProperty = new TokenProperty<CastExpressionSyntax>("OpenParenToken", n => n.OpenParenToken, (n, v) => n.WithOpenParenToken(v));
@@ -539,7 +596,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<CastExpressionSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- CatchClauseSyntax ----
 	internal static class CatchClauseInfo
 	{
 		private static readonly SyntaxNodeProperty<CatchClauseSyntax, SyntaxToken> CatchKeywordProperty = new TokenProperty<CatchClauseSyntax>("CatchKeyword", n => n.CatchKeyword, (n, v) => n.WithCatchKeyword(v));
@@ -562,7 +621,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<CatchClauseSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- CatchDeclarationSyntax ----
 	internal static class CatchDeclarationInfo
 	{
 		private static readonly SyntaxNodeProperty<CatchDeclarationSyntax, SyntaxToken> OpenParenTokenProperty = new TokenProperty<CatchDeclarationSyntax>("OpenParenToken", n => n.OpenParenToken, (n, v) => n.WithOpenParenToken(v));
@@ -585,7 +646,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<CatchDeclarationSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- CatchFilterClauseSyntax ----
 	internal static class CatchFilterClauseInfo
 	{
 		private static readonly SyntaxNodeProperty<CatchFilterClauseSyntax, SyntaxToken> WhenKeywordProperty = new TokenProperty<CatchFilterClauseSyntax>("WhenKeyword", n => n.WhenKeyword, (n, v) => n.WithWhenKeyword(v));
@@ -608,7 +671,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<CatchFilterClauseSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- CheckedExpressionSyntax ----
 	internal static class CheckedExpressionInfo
 	{
 		private static readonly SyntaxNodeProperty<CheckedExpressionSyntax, SyntaxToken> KeywordProperty = new TokenProperty<CheckedExpressionSyntax>("Keyword", n => n.Keyword, (n, v) => n.WithKeyword(v));
@@ -631,7 +696,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<CheckedExpressionSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- CheckedStatementSyntax ----
 	internal static class CheckedStatementInfo
 	{
 		private static readonly SyntaxNodeProperty<CheckedStatementSyntax, SyntaxToken> KeywordProperty = new TokenProperty<CheckedStatementSyntax>("Keyword", n => n.Keyword, (n, v) => n.WithKeyword(v));
@@ -646,7 +713,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<CheckedStatementSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- ClassDeclarationSyntax ----
 	internal static class ClassDeclarationInfo
 	{
 		private static readonly SyntaxNodeProperty<ClassDeclarationSyntax, SyntaxList<AttributeListSyntax>> AttributeListsProperty = new ListProperty<ClassDeclarationSyntax, AttributeListSyntax>("AttributeLists", n => n.AttributeLists, (n, v) => n.WithAttributeLists(v));
@@ -697,7 +766,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<ClassDeclarationSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- ClassOrStructConstraintSyntax ----
 	internal static class ClassOrStructConstraintInfo
 	{
 		private static readonly SyntaxNodeProperty<ClassOrStructConstraintSyntax, SyntaxToken> ClassOrStructKeywordProperty = new TokenProperty<ClassOrStructConstraintSyntax>("ClassOrStructKeyword", n => n.ClassOrStructKeyword, (n, v) => n.WithClassOrStructKeyword(v));
@@ -708,7 +779,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<ClassOrStructConstraintSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- CompilationUnitSyntax ----
 	internal static class CompilationUnitInfo
 	{
 		private static readonly SyntaxNodeProperty<CompilationUnitSyntax, SyntaxList<ExternAliasDirectiveSyntax>> ExternsProperty = new ListProperty<CompilationUnitSyntax, ExternAliasDirectiveSyntax>("Externs", n => n.Externs, (n, v) => n.WithExterns(v));
@@ -735,7 +808,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<CompilationUnitSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- ConditionalAccessExpressionSyntax ----
 	internal static class ConditionalAccessExpressionInfo
 	{
 		private static readonly SyntaxNodeProperty<ConditionalAccessExpressionSyntax, ExpressionSyntax> ExpressionProperty = new NodeProperty<ConditionalAccessExpressionSyntax, ExpressionSyntax>("Expression", n => n.Expression, (n, v) => n.WithExpression(v));
@@ -754,7 +829,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<ConditionalAccessExpressionSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- ConditionalExpressionSyntax ----
 	internal static class ConditionalExpressionInfo
 	{
 		private static readonly SyntaxNodeProperty<ConditionalExpressionSyntax, ExpressionSyntax> ConditionProperty = new NodeProperty<ConditionalExpressionSyntax, ExpressionSyntax>("Condition", n => n.Condition, (n, v) => n.WithCondition(v));
@@ -781,7 +858,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<ConditionalExpressionSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- ConstructorConstraintSyntax ----
 	internal static class ConstructorConstraintInfo
 	{
 		private static readonly SyntaxNodeProperty<ConstructorConstraintSyntax, SyntaxToken> NewKeywordProperty = new TokenProperty<ConstructorConstraintSyntax>("NewKeyword", n => n.NewKeyword, (n, v) => n.WithNewKeyword(v));
@@ -800,7 +879,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<ConstructorConstraintSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- ConstructorDeclarationSyntax ----
 	internal static class ConstructorDeclarationInfo
 	{
 		private static readonly SyntaxNodeProperty<ConstructorDeclarationSyntax, SyntaxList<AttributeListSyntax>> AttributeListsProperty = new ListProperty<ConstructorDeclarationSyntax, AttributeListSyntax>("AttributeLists", n => n.AttributeLists, (n, v) => n.WithAttributeLists(v));
@@ -835,7 +916,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<ConstructorDeclarationSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- ConstructorInitializerSyntax ----
 	internal static class ConstructorInitializerInfo
 	{
 		private static readonly SyntaxNodeProperty<ConstructorInitializerSyntax, SyntaxToken> ColonTokenProperty = new TokenProperty<ConstructorInitializerSyntax>("ColonToken", n => n.ColonToken, (n, v) => n.WithColonToken(v));
@@ -854,7 +937,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<ConstructorInitializerSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- ContinueStatementSyntax ----
 	internal static class ContinueStatementInfo
 	{
 		private static readonly SyntaxNodeProperty<ContinueStatementSyntax, SyntaxToken> ContinueKeywordProperty = new TokenProperty<ContinueStatementSyntax>("ContinueKeyword", n => n.ContinueKeyword, (n, v) => n.WithContinueKeyword(v));
@@ -869,7 +954,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<ContinueStatementSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- ConversionOperatorDeclarationSyntax ----
 	internal static class ConversionOperatorDeclarationInfo
 	{
 		private static readonly SyntaxNodeProperty<ConversionOperatorDeclarationSyntax, SyntaxList<AttributeListSyntax>> AttributeListsProperty = new ListProperty<ConversionOperatorDeclarationSyntax, AttributeListSyntax>("AttributeLists", n => n.AttributeLists, (n, v) => n.WithAttributeLists(v));
@@ -912,7 +999,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<ConversionOperatorDeclarationSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- ConversionOperatorMemberCrefSyntax ----
 	internal static class ConversionOperatorMemberCrefInfo
 	{
 		private static readonly SyntaxNodeProperty<ConversionOperatorMemberCrefSyntax, SyntaxToken> ImplicitOrExplicitKeywordProperty = new TokenProperty<ConversionOperatorMemberCrefSyntax>("ImplicitOrExplicitKeyword", n => n.ImplicitOrExplicitKeyword, (n, v) => n.WithImplicitOrExplicitKeyword(v));
@@ -935,7 +1024,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<ConversionOperatorMemberCrefSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- CrefBracketedParameterListSyntax ----
 	internal static class CrefBracketedParameterListInfo
 	{
 		private static readonly SyntaxNodeProperty<CrefBracketedParameterListSyntax, SyntaxToken> OpenBracketTokenProperty = new TokenProperty<CrefBracketedParameterListSyntax>("OpenBracketToken", n => n.OpenBracketToken, (n, v) => n.WithOpenBracketToken(v));
@@ -954,7 +1045,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<CrefBracketedParameterListSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- CrefParameterListSyntax ----
 	internal static class CrefParameterListInfo
 	{
 		private static readonly SyntaxNodeProperty<CrefParameterListSyntax, SyntaxToken> OpenParenTokenProperty = new TokenProperty<CrefParameterListSyntax>("OpenParenToken", n => n.OpenParenToken, (n, v) => n.WithOpenParenToken(v));
@@ -973,7 +1066,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<CrefParameterListSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- CrefParameterSyntax ----
 	internal static class CrefParameterInfo
 	{
 		private static readonly SyntaxNodeProperty<CrefParameterSyntax, SyntaxToken> RefOrOutKeywordProperty = new TokenProperty<CrefParameterSyntax>("RefOrOutKeyword", n => n.RefOrOutKeyword, (n, v) => n.WithRefOrOutKeyword(v));
@@ -988,7 +1083,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<CrefParameterSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- DefaultExpressionSyntax ----
 	internal static class DefaultExpressionInfo
 	{
 		private static readonly SyntaxNodeProperty<DefaultExpressionSyntax, SyntaxToken> KeywordProperty = new TokenProperty<DefaultExpressionSyntax>("Keyword", n => n.Keyword, (n, v) => n.WithKeyword(v));
@@ -1011,7 +1108,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<DefaultExpressionSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- DefaultSwitchLabelSyntax ----
 	internal static class DefaultSwitchLabelInfo
 	{
 		private static readonly SyntaxNodeProperty<DefaultSwitchLabelSyntax, SyntaxToken> KeywordProperty = new TokenProperty<DefaultSwitchLabelSyntax>("Keyword", n => n.Keyword, (n, v) => n.WithKeyword(v));
@@ -1026,7 +1125,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<DefaultSwitchLabelSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- DefineDirectiveTriviaSyntax ----
 	internal static class DefineDirectiveTriviaInfo
 	{
 		private static readonly SyntaxNodeProperty<DefineDirectiveTriviaSyntax, SyntaxToken> HashTokenProperty = new TokenProperty<DefineDirectiveTriviaSyntax>("HashToken", n => n.HashToken, (n, v) => n.WithHashToken(v));
@@ -1049,7 +1150,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<DefineDirectiveTriviaSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- DelegateDeclarationSyntax ----
 	internal static class DelegateDeclarationInfo
 	{
 		private static readonly SyntaxNodeProperty<DelegateDeclarationSyntax, SyntaxList<AttributeListSyntax>> AttributeListsProperty = new ListProperty<DelegateDeclarationSyntax, AttributeListSyntax>("AttributeLists", n => n.AttributeLists, (n, v) => n.WithAttributeLists(v));
@@ -1092,7 +1195,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<DelegateDeclarationSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- DestructorDeclarationSyntax ----
 	internal static class DestructorDeclarationInfo
 	{
 		private static readonly SyntaxNodeProperty<DestructorDeclarationSyntax, SyntaxList<AttributeListSyntax>> AttributeListsProperty = new ListProperty<DestructorDeclarationSyntax, AttributeListSyntax>("AttributeLists", n => n.AttributeLists, (n, v) => n.WithAttributeLists(v));
@@ -1127,7 +1232,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<DestructorDeclarationSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- DocumentationCommentTriviaSyntax ----
 	internal static class DocumentationCommentTriviaInfo
 	{
 		private static readonly SyntaxNodeProperty<DocumentationCommentTriviaSyntax, SyntaxList<XmlNodeSyntax>> ContentProperty = new ListProperty<DocumentationCommentTriviaSyntax, XmlNodeSyntax>("Content", n => n.Content, (n, v) => n.WithContent(v));
@@ -1142,7 +1249,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<DocumentationCommentTriviaSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- DoStatementSyntax ----
 	internal static class DoStatementInfo
 	{
 		private static readonly SyntaxNodeProperty<DoStatementSyntax, SyntaxToken> DoKeywordProperty = new TokenProperty<DoStatementSyntax>("DoKeyword", n => n.DoKeyword, (n, v) => n.WithDoKeyword(v));
@@ -1177,7 +1286,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<DoStatementSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- ElementAccessExpressionSyntax ----
 	internal static class ElementAccessExpressionInfo
 	{
 		private static readonly SyntaxNodeProperty<ElementAccessExpressionSyntax, ExpressionSyntax> ExpressionProperty = new NodeProperty<ElementAccessExpressionSyntax, ExpressionSyntax>("Expression", n => n.Expression, (n, v) => n.WithExpression(v));
@@ -1192,7 +1303,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<ElementAccessExpressionSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- ElementBindingExpressionSyntax ----
 	internal static class ElementBindingExpressionInfo
 	{
 		private static readonly SyntaxNodeProperty<ElementBindingExpressionSyntax, BracketedArgumentListSyntax> ArgumentListProperty = new NodeProperty<ElementBindingExpressionSyntax, BracketedArgumentListSyntax>("ArgumentList", n => n.ArgumentList, (n, v) => n.WithArgumentList(v));
@@ -1203,7 +1316,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<ElementBindingExpressionSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- ElifDirectiveTriviaSyntax ----
 	internal static class ElifDirectiveTriviaInfo
 	{
 		private static readonly SyntaxNodeProperty<ElifDirectiveTriviaSyntax, SyntaxToken> HashTokenProperty = new TokenProperty<ElifDirectiveTriviaSyntax>("HashToken", n => n.HashToken, (n, v) => n.WithHashToken(v));
@@ -1226,7 +1341,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<ElifDirectiveTriviaSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- ElseClauseSyntax ----
 	internal static class ElseClauseInfo
 	{
 		private static readonly SyntaxNodeProperty<ElseClauseSyntax, SyntaxToken> ElseKeywordProperty = new TokenProperty<ElseClauseSyntax>("ElseKeyword", n => n.ElseKeyword, (n, v) => n.WithElseKeyword(v));
@@ -1241,7 +1358,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<ElseClauseSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- ElseDirectiveTriviaSyntax ----
 	internal static class ElseDirectiveTriviaInfo
 	{
 		private static readonly SyntaxNodeProperty<ElseDirectiveTriviaSyntax, SyntaxToken> HashTokenProperty = new TokenProperty<ElseDirectiveTriviaSyntax>("HashToken", n => n.HashToken, (n, v) => n.WithHashToken(v));
@@ -1260,7 +1379,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<ElseDirectiveTriviaSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- EmptyStatementSyntax ----
 	internal static class EmptyStatementInfo
 	{
 		private static readonly SyntaxNodeProperty<EmptyStatementSyntax, SyntaxToken> SemicolonTokenProperty = new TokenProperty<EmptyStatementSyntax>("SemicolonToken", n => n.SemicolonToken, (n, v) => n.WithSemicolonToken(v));
@@ -1271,7 +1392,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<EmptyStatementSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- EndIfDirectiveTriviaSyntax ----
 	internal static class EndIfDirectiveTriviaInfo
 	{
 		private static readonly SyntaxNodeProperty<EndIfDirectiveTriviaSyntax, SyntaxToken> HashTokenProperty = new TokenProperty<EndIfDirectiveTriviaSyntax>("HashToken", n => n.HashToken, (n, v) => n.WithHashToken(v));
@@ -1290,7 +1413,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<EndIfDirectiveTriviaSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- EndRegionDirectiveTriviaSyntax ----
 	internal static class EndRegionDirectiveTriviaInfo
 	{
 		private static readonly SyntaxNodeProperty<EndRegionDirectiveTriviaSyntax, SyntaxToken> HashTokenProperty = new TokenProperty<EndRegionDirectiveTriviaSyntax>("HashToken", n => n.HashToken, (n, v) => n.WithHashToken(v));
@@ -1309,7 +1434,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<EndRegionDirectiveTriviaSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- EnumDeclarationSyntax ----
 	internal static class EnumDeclarationInfo
 	{
 		private static readonly SyntaxNodeProperty<EnumDeclarationSyntax, SyntaxList<AttributeListSyntax>> AttributeListsProperty = new ListProperty<EnumDeclarationSyntax, AttributeListSyntax>("AttributeLists", n => n.AttributeLists, (n, v) => n.WithAttributeLists(v));
@@ -1352,7 +1479,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<EnumDeclarationSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- EnumMemberDeclarationSyntax ----
 	internal static class EnumMemberDeclarationInfo
 	{
 		private static readonly SyntaxNodeProperty<EnumMemberDeclarationSyntax, SyntaxList<AttributeListSyntax>> AttributeListsProperty = new ListProperty<EnumMemberDeclarationSyntax, AttributeListSyntax>("AttributeLists", n => n.AttributeLists, (n, v) => n.WithAttributeLists(v));
@@ -1371,7 +1500,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<EnumMemberDeclarationSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- EqualsValueClauseSyntax ----
 	internal static class EqualsValueClauseInfo
 	{
 		private static readonly SyntaxNodeProperty<EqualsValueClauseSyntax, SyntaxToken> EqualsTokenProperty = new TokenProperty<EqualsValueClauseSyntax>("EqualsToken", n => n.EqualsToken, (n, v) => n.WithEqualsToken(v));
@@ -1386,7 +1517,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<EqualsValueClauseSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- ErrorDirectiveTriviaSyntax ----
 	internal static class ErrorDirectiveTriviaInfo
 	{
 		private static readonly SyntaxNodeProperty<ErrorDirectiveTriviaSyntax, SyntaxToken> HashTokenProperty = new TokenProperty<ErrorDirectiveTriviaSyntax>("HashToken", n => n.HashToken, (n, v) => n.WithHashToken(v));
@@ -1405,7 +1538,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<ErrorDirectiveTriviaSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- EventDeclarationSyntax ----
 	internal static class EventDeclarationInfo
 	{
 		private static readonly SyntaxNodeProperty<EventDeclarationSyntax, SyntaxList<AttributeListSyntax>> AttributeListsProperty = new ListProperty<EventDeclarationSyntax, AttributeListSyntax>("AttributeLists", n => n.AttributeLists, (n, v) => n.WithAttributeLists(v));
@@ -1440,7 +1575,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<EventDeclarationSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- EventFieldDeclarationSyntax ----
 	internal static class EventFieldDeclarationInfo
 	{
 		private static readonly SyntaxNodeProperty<EventFieldDeclarationSyntax, SyntaxList<AttributeListSyntax>> AttributeListsProperty = new ListProperty<EventFieldDeclarationSyntax, AttributeListSyntax>("AttributeLists", n => n.AttributeLists, (n, v) => n.WithAttributeLists(v));
@@ -1467,7 +1604,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<EventFieldDeclarationSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- ExplicitInterfaceSpecifierSyntax ----
 	internal static class ExplicitInterfaceSpecifierInfo
 	{
 		private static readonly SyntaxNodeProperty<ExplicitInterfaceSpecifierSyntax, NameSyntax> NameProperty = new NodeProperty<ExplicitInterfaceSpecifierSyntax, NameSyntax>("Name", n => n.Name, (n, v) => n.WithName(v));
@@ -1482,7 +1621,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<ExplicitInterfaceSpecifierSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- ExpressionStatementSyntax ----
 	internal static class ExpressionStatementInfo
 	{
 		private static readonly SyntaxNodeProperty<ExpressionStatementSyntax, ExpressionSyntax> ExpressionProperty = new NodeProperty<ExpressionStatementSyntax, ExpressionSyntax>("Expression", n => n.Expression, (n, v) => n.WithExpression(v));
@@ -1497,7 +1638,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<ExpressionStatementSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- ExternAliasDirectiveSyntax ----
 	internal static class ExternAliasDirectiveInfo
 	{
 		private static readonly SyntaxNodeProperty<ExternAliasDirectiveSyntax, SyntaxToken> ExternKeywordProperty = new TokenProperty<ExternAliasDirectiveSyntax>("ExternKeyword", n => n.ExternKeyword, (n, v) => n.WithExternKeyword(v));
@@ -1520,7 +1663,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<ExternAliasDirectiveSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- FieldDeclarationSyntax ----
 	internal static class FieldDeclarationInfo
 	{
 		private static readonly SyntaxNodeProperty<FieldDeclarationSyntax, SyntaxList<AttributeListSyntax>> AttributeListsProperty = new ListProperty<FieldDeclarationSyntax, AttributeListSyntax>("AttributeLists", n => n.AttributeLists, (n, v) => n.WithAttributeLists(v));
@@ -1543,7 +1688,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<FieldDeclarationSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- FinallyClauseSyntax ----
 	internal static class FinallyClauseInfo
 	{
 		private static readonly SyntaxNodeProperty<FinallyClauseSyntax, SyntaxToken> FinallyKeywordProperty = new TokenProperty<FinallyClauseSyntax>("FinallyKeyword", n => n.FinallyKeyword, (n, v) => n.WithFinallyKeyword(v));
@@ -1558,7 +1705,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<FinallyClauseSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- FixedStatementSyntax ----
 	internal static class FixedStatementInfo
 	{
 		private static readonly SyntaxNodeProperty<FixedStatementSyntax, SyntaxToken> FixedKeywordProperty = new TokenProperty<FixedStatementSyntax>("FixedKeyword", n => n.FixedKeyword, (n, v) => n.WithFixedKeyword(v));
@@ -1585,7 +1734,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<FixedStatementSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- ForEachStatementSyntax ----
 	internal static class ForEachStatementInfo
 	{
 		private static readonly SyntaxNodeProperty<ForEachStatementSyntax, SyntaxToken> ForEachKeywordProperty = new TokenProperty<ForEachStatementSyntax>("ForEachKeyword", n => n.ForEachKeyword, (n, v) => n.WithForEachKeyword(v));
@@ -1624,7 +1775,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<ForEachStatementSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- ForStatementSyntax ----
 	internal static class ForStatementInfo
 	{
 		private static readonly SyntaxNodeProperty<ForStatementSyntax, SyntaxToken> ForKeywordProperty = new TokenProperty<ForStatementSyntax>("ForKeyword", n => n.ForKeyword, (n, v) => n.WithForKeyword(v));
@@ -1671,7 +1824,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<ForStatementSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- FromClauseSyntax ----
 	internal static class FromClauseInfo
 	{
 		private static readonly SyntaxNodeProperty<FromClauseSyntax, SyntaxToken> FromKeywordProperty = new TokenProperty<FromClauseSyntax>("FromKeyword", n => n.FromKeyword, (n, v) => n.WithFromKeyword(v));
@@ -1698,7 +1853,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<FromClauseSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- GenericNameSyntax ----
 	internal static class GenericNameInfo
 	{
 		private static readonly SyntaxNodeProperty<GenericNameSyntax, SyntaxToken> IdentifierProperty = new TokenProperty<GenericNameSyntax>("Identifier", n => n.Identifier, (n, v) => n.WithIdentifier(v));
@@ -1713,7 +1870,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<GenericNameSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- GlobalStatementSyntax ----
 	internal static class GlobalStatementInfo
 	{
 		private static readonly SyntaxNodeProperty<GlobalStatementSyntax, StatementSyntax> StatementProperty = new NodeProperty<GlobalStatementSyntax, StatementSyntax>("Statement", n => n.Statement, (n, v) => n.WithStatement(v));
@@ -1724,7 +1883,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<GlobalStatementSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- GotoStatementSyntax ----
 	internal static class GotoStatementInfo
 	{
 		private static readonly SyntaxNodeProperty<GotoStatementSyntax, SyntaxToken> GotoKeywordProperty = new TokenProperty<GotoStatementSyntax>("GotoKeyword", n => n.GotoKeyword, (n, v) => n.WithGotoKeyword(v));
@@ -1747,7 +1908,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<GotoStatementSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- GroupClauseSyntax ----
 	internal static class GroupClauseInfo
 	{
 		private static readonly SyntaxNodeProperty<GroupClauseSyntax, SyntaxToken> GroupKeywordProperty = new TokenProperty<GroupClauseSyntax>("GroupKeyword", n => n.GroupKeyword, (n, v) => n.WithGroupKeyword(v));
@@ -1770,7 +1933,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<GroupClauseSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- IdentifierNameSyntax ----
 	internal static class IdentifierNameInfo
 	{
 		private static readonly SyntaxNodeProperty<IdentifierNameSyntax, SyntaxToken> IdentifierProperty = new TokenProperty<IdentifierNameSyntax>("Identifier", n => n.Identifier, (n, v) => n.WithIdentifier(v));
@@ -1781,7 +1946,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<IdentifierNameSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- IfDirectiveTriviaSyntax ----
 	internal static class IfDirectiveTriviaInfo
 	{
 		private static readonly SyntaxNodeProperty<IfDirectiveTriviaSyntax, SyntaxToken> HashTokenProperty = new TokenProperty<IfDirectiveTriviaSyntax>("HashToken", n => n.HashToken, (n, v) => n.WithHashToken(v));
@@ -1804,7 +1971,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<IfDirectiveTriviaSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- IfStatementSyntax ----
 	internal static class IfStatementInfo
 	{
 		private static readonly SyntaxNodeProperty<IfStatementSyntax, SyntaxToken> IfKeywordProperty = new TokenProperty<IfStatementSyntax>("IfKeyword", n => n.IfKeyword, (n, v) => n.WithIfKeyword(v));
@@ -1835,7 +2004,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<IfStatementSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- ImplicitArrayCreationExpressionSyntax ----
 	internal static class ImplicitArrayCreationExpressionInfo
 	{
 		private static readonly SyntaxNodeProperty<ImplicitArrayCreationExpressionSyntax, SyntaxToken> NewKeywordProperty = new TokenProperty<ImplicitArrayCreationExpressionSyntax>("NewKeyword", n => n.NewKeyword, (n, v) => n.WithNewKeyword(v));
@@ -1862,7 +2033,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<ImplicitArrayCreationExpressionSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- ImplicitElementAccessSyntax ----
 	internal static class ImplicitElementAccessInfo
 	{
 		private static readonly SyntaxNodeProperty<ImplicitElementAccessSyntax, BracketedArgumentListSyntax> ArgumentListProperty = new NodeProperty<ImplicitElementAccessSyntax, BracketedArgumentListSyntax>("ArgumentList", n => n.ArgumentList, (n, v) => n.WithArgumentList(v));
@@ -1873,7 +2046,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<ImplicitElementAccessSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- IncompleteMemberSyntax ----
 	internal static class IncompleteMemberInfo
 	{
 		private static readonly SyntaxNodeProperty<IncompleteMemberSyntax, SyntaxList<AttributeListSyntax>> AttributeListsProperty = new ListProperty<IncompleteMemberSyntax, AttributeListSyntax>("AttributeLists", n => n.AttributeLists, (n, v) => n.WithAttributeLists(v));
@@ -1892,7 +2067,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<IncompleteMemberSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- IndexerDeclarationSyntax ----
 	internal static class IndexerDeclarationInfo
 	{
 		private static readonly SyntaxNodeProperty<IndexerDeclarationSyntax, SyntaxList<AttributeListSyntax>> AttributeListsProperty = new ListProperty<IndexerDeclarationSyntax, AttributeListSyntax>("AttributeLists", n => n.AttributeLists, (n, v) => n.WithAttributeLists(v));
@@ -1935,7 +2112,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<IndexerDeclarationSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- IndexerMemberCrefSyntax ----
 	internal static class IndexerMemberCrefInfo
 	{
 		private static readonly SyntaxNodeProperty<IndexerMemberCrefSyntax, SyntaxToken> ThisKeywordProperty = new TokenProperty<IndexerMemberCrefSyntax>("ThisKeyword", n => n.ThisKeyword, (n, v) => n.WithThisKeyword(v));
@@ -1950,7 +2129,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<IndexerMemberCrefSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- InitializerExpressionSyntax ----
 	internal static class InitializerExpressionInfo
 	{
 		private static readonly SyntaxNodeProperty<InitializerExpressionSyntax, SyntaxToken> OpenBraceTokenProperty = new TokenProperty<InitializerExpressionSyntax>("OpenBraceToken", n => n.OpenBraceToken, (n, v) => n.WithOpenBraceToken(v));
@@ -1969,7 +2150,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<InitializerExpressionSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- InterfaceDeclarationSyntax ----
 	internal static class InterfaceDeclarationInfo
 	{
 		private static readonly SyntaxNodeProperty<InterfaceDeclarationSyntax, SyntaxList<AttributeListSyntax>> AttributeListsProperty = new ListProperty<InterfaceDeclarationSyntax, AttributeListSyntax>("AttributeLists", n => n.AttributeLists, (n, v) => n.WithAttributeLists(v));
@@ -2020,7 +2203,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<InterfaceDeclarationSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- InterpolatedStringExpressionSyntax ----
 	internal static class InterpolatedStringExpressionInfo
 	{
 		private static readonly SyntaxNodeProperty<InterpolatedStringExpressionSyntax, SyntaxToken> StringStartTokenProperty = new TokenProperty<InterpolatedStringExpressionSyntax>("StringStartToken", n => n.StringStartToken, (n, v) => n.WithStringStartToken(v));
@@ -2039,7 +2224,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<InterpolatedStringExpressionSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- InterpolatedStringTextSyntax ----
 	internal static class InterpolatedStringTextInfo
 	{
 		private static readonly SyntaxNodeProperty<InterpolatedStringTextSyntax, SyntaxToken> TextTokenProperty = new TokenProperty<InterpolatedStringTextSyntax>("TextToken", n => n.TextToken, (n, v) => n.WithTextToken(v));
@@ -2050,7 +2237,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<InterpolatedStringTextSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- InterpolationAlignmentClauseSyntax ----
 	internal static class InterpolationAlignmentClauseInfo
 	{
 		private static readonly SyntaxNodeProperty<InterpolationAlignmentClauseSyntax, SyntaxToken> CommaTokenProperty = new TokenProperty<InterpolationAlignmentClauseSyntax>("CommaToken", n => n.CommaToken, (n, v) => n.WithCommaToken(v));
@@ -2065,7 +2254,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<InterpolationAlignmentClauseSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- InterpolationFormatClauseSyntax ----
 	internal static class InterpolationFormatClauseInfo
 	{
 		private static readonly SyntaxNodeProperty<InterpolationFormatClauseSyntax, SyntaxToken> ColonTokenProperty = new TokenProperty<InterpolationFormatClauseSyntax>("ColonToken", n => n.ColonToken, (n, v) => n.WithColonToken(v));
@@ -2080,7 +2271,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<InterpolationFormatClauseSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- InterpolationSyntax ----
 	internal static class InterpolationInfo
 	{
 		private static readonly SyntaxNodeProperty<InterpolationSyntax, SyntaxToken> OpenBraceTokenProperty = new TokenProperty<InterpolationSyntax>("OpenBraceToken", n => n.OpenBraceToken, (n, v) => n.WithOpenBraceToken(v));
@@ -2107,7 +2300,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<InterpolationSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- InvocationExpressionSyntax ----
 	internal static class InvocationExpressionInfo
 	{
 		private static readonly SyntaxNodeProperty<InvocationExpressionSyntax, ExpressionSyntax> ExpressionProperty = new NodeProperty<InvocationExpressionSyntax, ExpressionSyntax>("Expression", n => n.Expression, (n, v) => n.WithExpression(v));
@@ -2122,7 +2317,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<InvocationExpressionSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- JoinClauseSyntax ----
 	internal static class JoinClauseInfo
 	{
 		private static readonly SyntaxNodeProperty<JoinClauseSyntax, SyntaxToken> JoinKeywordProperty = new TokenProperty<JoinClauseSyntax>("JoinKeyword", n => n.JoinKeyword, (n, v) => n.WithJoinKeyword(v));
@@ -2169,7 +2366,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<JoinClauseSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- JoinIntoClauseSyntax ----
 	internal static class JoinIntoClauseInfo
 	{
 		private static readonly SyntaxNodeProperty<JoinIntoClauseSyntax, SyntaxToken> IntoKeywordProperty = new TokenProperty<JoinIntoClauseSyntax>("IntoKeyword", n => n.IntoKeyword, (n, v) => n.WithIntoKeyword(v));
@@ -2184,7 +2383,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<JoinIntoClauseSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- LabeledStatementSyntax ----
 	internal static class LabeledStatementInfo
 	{
 		private static readonly SyntaxNodeProperty<LabeledStatementSyntax, SyntaxToken> IdentifierProperty = new TokenProperty<LabeledStatementSyntax>("Identifier", n => n.Identifier, (n, v) => n.WithIdentifier(v));
@@ -2203,7 +2404,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<LabeledStatementSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- LetClauseSyntax ----
 	internal static class LetClauseInfo
 	{
 		private static readonly SyntaxNodeProperty<LetClauseSyntax, SyntaxToken> LetKeywordProperty = new TokenProperty<LetClauseSyntax>("LetKeyword", n => n.LetKeyword, (n, v) => n.WithLetKeyword(v));
@@ -2226,7 +2429,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<LetClauseSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- LineDirectiveTriviaSyntax ----
 	internal static class LineDirectiveTriviaInfo
 	{
 		private static readonly SyntaxNodeProperty<LineDirectiveTriviaSyntax, SyntaxToken> HashTokenProperty = new TokenProperty<LineDirectiveTriviaSyntax>("HashToken", n => n.HashToken, (n, v) => n.WithHashToken(v));
@@ -2253,7 +2458,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<LineDirectiveTriviaSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- LiteralExpressionSyntax ----
 	internal static class LiteralExpressionInfo
 	{
 		private static readonly SyntaxNodeProperty<LiteralExpressionSyntax, SyntaxToken> TokenProperty = new TokenProperty<LiteralExpressionSyntax>("Token", n => n.Token, (n, v) => n.WithToken(v));
@@ -2264,7 +2471,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<LiteralExpressionSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- LoadDirectiveTriviaSyntax ----
 	internal static class LoadDirectiveTriviaInfo
 	{
 		private static readonly SyntaxNodeProperty<LoadDirectiveTriviaSyntax, SyntaxToken> HashTokenProperty = new TokenProperty<LoadDirectiveTriviaSyntax>("HashToken", n => n.HashToken, (n, v) => n.WithHashToken(v));
@@ -2287,7 +2496,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<LoadDirectiveTriviaSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- LocalDeclarationStatementSyntax ----
 	internal static class LocalDeclarationStatementInfo
 	{
 		private static readonly SyntaxNodeProperty<LocalDeclarationStatementSyntax, SyntaxTokenList> ModifiersProperty = new TokenListProperty<LocalDeclarationStatementSyntax>("Modifiers", n => n.Modifiers, (n, v) => n.WithModifiers(v));
@@ -2306,7 +2517,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<LocalDeclarationStatementSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- LockStatementSyntax ----
 	internal static class LockStatementInfo
 	{
 		private static readonly SyntaxNodeProperty<LockStatementSyntax, SyntaxToken> LockKeywordProperty = new TokenProperty<LockStatementSyntax>("LockKeyword", n => n.LockKeyword, (n, v) => n.WithLockKeyword(v));
@@ -2333,7 +2546,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<LockStatementSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- MakeRefExpressionSyntax ----
 	internal static class MakeRefExpressionInfo
 	{
 		private static readonly SyntaxNodeProperty<MakeRefExpressionSyntax, SyntaxToken> KeywordProperty = new TokenProperty<MakeRefExpressionSyntax>("Keyword", n => n.Keyword, (n, v) => n.WithKeyword(v));
@@ -2356,7 +2571,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<MakeRefExpressionSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- MemberAccessExpressionSyntax ----
 	internal static class MemberAccessExpressionInfo
 	{
 		private static readonly SyntaxNodeProperty<MemberAccessExpressionSyntax, ExpressionSyntax> ExpressionProperty = new NodeProperty<MemberAccessExpressionSyntax, ExpressionSyntax>("Expression", n => n.Expression, (n, v) => n.WithExpression(v));
@@ -2375,7 +2592,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<MemberAccessExpressionSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- MemberBindingExpressionSyntax ----
 	internal static class MemberBindingExpressionInfo
 	{
 		private static readonly SyntaxNodeProperty<MemberBindingExpressionSyntax, SyntaxToken> OperatorTokenProperty = new TokenProperty<MemberBindingExpressionSyntax>("OperatorToken", n => n.OperatorToken, (n, v) => n.WithOperatorToken(v));
@@ -2390,7 +2609,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<MemberBindingExpressionSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- MethodDeclarationSyntax ----
 	internal static class MethodDeclarationInfo
 	{
 		private static readonly SyntaxNodeProperty<MethodDeclarationSyntax, SyntaxList<AttributeListSyntax>> AttributeListsProperty = new ListProperty<MethodDeclarationSyntax, AttributeListSyntax>("AttributeLists", n => n.AttributeLists, (n, v) => n.WithAttributeLists(v));
@@ -2441,7 +2662,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<MethodDeclarationSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- NameColonSyntax ----
 	internal static class NameColonInfo
 	{
 		private static readonly SyntaxNodeProperty<NameColonSyntax, IdentifierNameSyntax> NameProperty = new NodeProperty<NameColonSyntax, IdentifierNameSyntax>("Name", n => n.Name, (n, v) => n.WithName(v));
@@ -2456,7 +2679,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<NameColonSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- NameEqualsSyntax ----
 	internal static class NameEqualsInfo
 	{
 		private static readonly SyntaxNodeProperty<NameEqualsSyntax, IdentifierNameSyntax> NameProperty = new NodeProperty<NameEqualsSyntax, IdentifierNameSyntax>("Name", n => n.Name, (n, v) => n.WithName(v));
@@ -2471,7 +2696,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<NameEqualsSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- NameMemberCrefSyntax ----
 	internal static class NameMemberCrefInfo
 	{
 		private static readonly SyntaxNodeProperty<NameMemberCrefSyntax, TypeSyntax> NameProperty = new NodeProperty<NameMemberCrefSyntax, TypeSyntax>("Name", n => n.Name, (n, v) => n.WithName(v));
@@ -2486,7 +2713,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<NameMemberCrefSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- NamespaceDeclarationSyntax ----
 	internal static class NamespaceDeclarationInfo
 	{
 		private static readonly SyntaxNodeProperty<NamespaceDeclarationSyntax, SyntaxToken> NamespaceKeywordProperty = new TokenProperty<NamespaceDeclarationSyntax>("NamespaceKeyword", n => n.NamespaceKeyword, (n, v) => n.WithNamespaceKeyword(v));
@@ -2525,7 +2754,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<NamespaceDeclarationSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- NullableTypeSyntax ----
 	internal static class NullableTypeInfo
 	{
 		private static readonly SyntaxNodeProperty<NullableTypeSyntax, TypeSyntax> ElementTypeProperty = new NodeProperty<NullableTypeSyntax, TypeSyntax>("ElementType", n => n.ElementType, (n, v) => n.WithElementType(v));
@@ -2540,7 +2771,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<NullableTypeSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- ObjectCreationExpressionSyntax ----
 	internal static class ObjectCreationExpressionInfo
 	{
 		private static readonly SyntaxNodeProperty<ObjectCreationExpressionSyntax, SyntaxToken> NewKeywordProperty = new TokenProperty<ObjectCreationExpressionSyntax>("NewKeyword", n => n.NewKeyword, (n, v) => n.WithNewKeyword(v));
@@ -2563,7 +2796,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<ObjectCreationExpressionSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- OmittedArraySizeExpressionSyntax ----
 	internal static class OmittedArraySizeExpressionInfo
 	{
 		private static readonly SyntaxNodeProperty<OmittedArraySizeExpressionSyntax, SyntaxToken> OmittedArraySizeExpressionTokenProperty = new TokenProperty<OmittedArraySizeExpressionSyntax>("OmittedArraySizeExpressionToken", n => n.OmittedArraySizeExpressionToken, (n, v) => n.WithOmittedArraySizeExpressionToken(v));
@@ -2574,7 +2809,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<OmittedArraySizeExpressionSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- OmittedTypeArgumentSyntax ----
 	internal static class OmittedTypeArgumentInfo
 	{
 		private static readonly SyntaxNodeProperty<OmittedTypeArgumentSyntax, SyntaxToken> OmittedTypeArgumentTokenProperty = new TokenProperty<OmittedTypeArgumentSyntax>("OmittedTypeArgumentToken", n => n.OmittedTypeArgumentToken, (n, v) => n.WithOmittedTypeArgumentToken(v));
@@ -2585,7 +2822,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<OmittedTypeArgumentSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- OperatorDeclarationSyntax ----
 	internal static class OperatorDeclarationInfo
 	{
 		private static readonly SyntaxNodeProperty<OperatorDeclarationSyntax, SyntaxList<AttributeListSyntax>> AttributeListsProperty = new ListProperty<OperatorDeclarationSyntax, AttributeListSyntax>("AttributeLists", n => n.AttributeLists, (n, v) => n.WithAttributeLists(v));
@@ -2628,7 +2867,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<OperatorDeclarationSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- OperatorMemberCrefSyntax ----
 	internal static class OperatorMemberCrefInfo
 	{
 		private static readonly SyntaxNodeProperty<OperatorMemberCrefSyntax, SyntaxToken> OperatorKeywordProperty = new TokenProperty<OperatorMemberCrefSyntax>("OperatorKeyword", n => n.OperatorKeyword, (n, v) => n.WithOperatorKeyword(v));
@@ -2647,7 +2888,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<OperatorMemberCrefSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- OrderByClauseSyntax ----
 	internal static class OrderByClauseInfo
 	{
 		private static readonly SyntaxNodeProperty<OrderByClauseSyntax, SyntaxToken> OrderByKeywordProperty = new TokenProperty<OrderByClauseSyntax>("OrderByKeyword", n => n.OrderByKeyword, (n, v) => n.WithOrderByKeyword(v));
@@ -2662,7 +2905,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<OrderByClauseSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- OrderingSyntax ----
 	internal static class OrderingInfo
 	{
 		private static readonly SyntaxNodeProperty<OrderingSyntax, ExpressionSyntax> ExpressionProperty = new NodeProperty<OrderingSyntax, ExpressionSyntax>("Expression", n => n.Expression, (n, v) => n.WithExpression(v));
@@ -2677,7 +2922,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<OrderingSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- ParameterListSyntax ----
 	internal static class ParameterListInfo
 	{
 		private static readonly SyntaxNodeProperty<ParameterListSyntax, SyntaxToken> OpenParenTokenProperty = new TokenProperty<ParameterListSyntax>("OpenParenToken", n => n.OpenParenToken, (n, v) => n.WithOpenParenToken(v));
@@ -2696,7 +2943,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<ParameterListSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- ParameterSyntax ----
 	internal static class ParameterInfo
 	{
 		private static readonly SyntaxNodeProperty<ParameterSyntax, SyntaxList<AttributeListSyntax>> AttributeListsProperty = new ListProperty<ParameterSyntax, AttributeListSyntax>("AttributeLists", n => n.AttributeLists, (n, v) => n.WithAttributeLists(v));
@@ -2723,7 +2972,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<ParameterSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- ParenthesizedExpressionSyntax ----
 	internal static class ParenthesizedExpressionInfo
 	{
 		private static readonly SyntaxNodeProperty<ParenthesizedExpressionSyntax, SyntaxToken> OpenParenTokenProperty = new TokenProperty<ParenthesizedExpressionSyntax>("OpenParenToken", n => n.OpenParenToken, (n, v) => n.WithOpenParenToken(v));
@@ -2742,7 +2993,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<ParenthesizedExpressionSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- ParenthesizedLambdaExpressionSyntax ----
 	internal static class ParenthesizedLambdaExpressionInfo
 	{
 		private static readonly SyntaxNodeProperty<ParenthesizedLambdaExpressionSyntax, SyntaxToken> AsyncKeywordProperty = new TokenProperty<ParenthesizedLambdaExpressionSyntax>("AsyncKeyword", n => n.AsyncKeyword, (n, v) => n.WithAsyncKeyword(v));
@@ -2765,7 +3018,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<ParenthesizedLambdaExpressionSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- PointerTypeSyntax ----
 	internal static class PointerTypeInfo
 	{
 		private static readonly SyntaxNodeProperty<PointerTypeSyntax, TypeSyntax> ElementTypeProperty = new NodeProperty<PointerTypeSyntax, TypeSyntax>("ElementType", n => n.ElementType, (n, v) => n.WithElementType(v));
@@ -2780,7 +3035,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<PointerTypeSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- PostfixUnaryExpressionSyntax ----
 	internal static class PostfixUnaryExpressionInfo
 	{
 		private static readonly SyntaxNodeProperty<PostfixUnaryExpressionSyntax, ExpressionSyntax> OperandProperty = new NodeProperty<PostfixUnaryExpressionSyntax, ExpressionSyntax>("Operand", n => n.Operand, (n, v) => n.WithOperand(v));
@@ -2795,7 +3052,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<PostfixUnaryExpressionSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- PragmaChecksumDirectiveTriviaSyntax ----
 	internal static class PragmaChecksumDirectiveTriviaInfo
 	{
 		private static readonly SyntaxNodeProperty<PragmaChecksumDirectiveTriviaSyntax, SyntaxToken> HashTokenProperty = new TokenProperty<PragmaChecksumDirectiveTriviaSyntax>("HashToken", n => n.HashToken, (n, v) => n.WithHashToken(v));
@@ -2830,7 +3089,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<PragmaChecksumDirectiveTriviaSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- PragmaWarningDirectiveTriviaSyntax ----
 	internal static class PragmaWarningDirectiveTriviaInfo
 	{
 		private static readonly SyntaxNodeProperty<PragmaWarningDirectiveTriviaSyntax, SyntaxToken> HashTokenProperty = new TokenProperty<PragmaWarningDirectiveTriviaSyntax>("HashToken", n => n.HashToken, (n, v) => n.WithHashToken(v));
@@ -2861,7 +3122,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<PragmaWarningDirectiveTriviaSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- PredefinedTypeSyntax ----
 	internal static class PredefinedTypeInfo
 	{
 		private static readonly SyntaxNodeProperty<PredefinedTypeSyntax, SyntaxToken> KeywordProperty = new TokenProperty<PredefinedTypeSyntax>("Keyword", n => n.Keyword, (n, v) => n.WithKeyword(v));
@@ -2872,7 +3135,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<PredefinedTypeSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- PrefixUnaryExpressionSyntax ----
 	internal static class PrefixUnaryExpressionInfo
 	{
 		private static readonly SyntaxNodeProperty<PrefixUnaryExpressionSyntax, SyntaxToken> OperatorTokenProperty = new TokenProperty<PrefixUnaryExpressionSyntax>("OperatorToken", n => n.OperatorToken, (n, v) => n.WithOperatorToken(v));
@@ -2887,7 +3152,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<PrefixUnaryExpressionSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- PropertyDeclarationSyntax ----
 	internal static class PropertyDeclarationInfo
 	{
 		private static readonly SyntaxNodeProperty<PropertyDeclarationSyntax, SyntaxList<AttributeListSyntax>> AttributeListsProperty = new ListProperty<PropertyDeclarationSyntax, AttributeListSyntax>("AttributeLists", n => n.AttributeLists, (n, v) => n.WithAttributeLists(v));
@@ -2930,7 +3197,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<PropertyDeclarationSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- QualifiedCrefSyntax ----
 	internal static class QualifiedCrefInfo
 	{
 		private static readonly SyntaxNodeProperty<QualifiedCrefSyntax, TypeSyntax> ContainerProperty = new NodeProperty<QualifiedCrefSyntax, TypeSyntax>("Container", n => n.Container, (n, v) => n.WithContainer(v));
@@ -2949,7 +3218,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<QualifiedCrefSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- QualifiedNameSyntax ----
 	internal static class QualifiedNameInfo
 	{
 		private static readonly SyntaxNodeProperty<QualifiedNameSyntax, NameSyntax> LeftProperty = new NodeProperty<QualifiedNameSyntax, NameSyntax>("Left", n => n.Left, (n, v) => n.WithLeft(v));
@@ -2968,7 +3239,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<QualifiedNameSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- QueryBodySyntax ----
 	internal static class QueryBodyInfo
 	{
 		private static readonly SyntaxNodeProperty<QueryBodySyntax, SyntaxList<QueryClauseSyntax>> ClausesProperty = new ListProperty<QueryBodySyntax, QueryClauseSyntax>("Clauses", n => n.Clauses, (n, v) => n.WithClauses(v));
@@ -2987,7 +3260,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<QueryBodySyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- QueryContinuationSyntax ----
 	internal static class QueryContinuationInfo
 	{
 		private static readonly SyntaxNodeProperty<QueryContinuationSyntax, SyntaxToken> IntoKeywordProperty = new TokenProperty<QueryContinuationSyntax>("IntoKeyword", n => n.IntoKeyword, (n, v) => n.WithIntoKeyword(v));
@@ -3006,7 +3281,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<QueryContinuationSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- QueryExpressionSyntax ----
 	internal static class QueryExpressionInfo
 	{
 		private static readonly SyntaxNodeProperty<QueryExpressionSyntax, FromClauseSyntax> FromClauseProperty = new NodeProperty<QueryExpressionSyntax, FromClauseSyntax>("FromClause", n => n.FromClause, (n, v) => n.WithFromClause(v));
@@ -3021,7 +3298,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<QueryExpressionSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- ReferenceDirectiveTriviaSyntax ----
 	internal static class ReferenceDirectiveTriviaInfo
 	{
 		private static readonly SyntaxNodeProperty<ReferenceDirectiveTriviaSyntax, SyntaxToken> HashTokenProperty = new TokenProperty<ReferenceDirectiveTriviaSyntax>("HashToken", n => n.HashToken, (n, v) => n.WithHashToken(v));
@@ -3044,7 +3323,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<ReferenceDirectiveTriviaSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- RefTypeExpressionSyntax ----
 	internal static class RefTypeExpressionInfo
 	{
 		private static readonly SyntaxNodeProperty<RefTypeExpressionSyntax, SyntaxToken> KeywordProperty = new TokenProperty<RefTypeExpressionSyntax>("Keyword", n => n.Keyword, (n, v) => n.WithKeyword(v));
@@ -3067,7 +3348,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<RefTypeExpressionSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- RefValueExpressionSyntax ----
 	internal static class RefValueExpressionInfo
 	{
 		private static readonly SyntaxNodeProperty<RefValueExpressionSyntax, SyntaxToken> KeywordProperty = new TokenProperty<RefValueExpressionSyntax>("Keyword", n => n.Keyword, (n, v) => n.WithKeyword(v));
@@ -3098,7 +3381,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<RefValueExpressionSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- RegionDirectiveTriviaSyntax ----
 	internal static class RegionDirectiveTriviaInfo
 	{
 		private static readonly SyntaxNodeProperty<RegionDirectiveTriviaSyntax, SyntaxToken> HashTokenProperty = new TokenProperty<RegionDirectiveTriviaSyntax>("HashToken", n => n.HashToken, (n, v) => n.WithHashToken(v));
@@ -3117,7 +3402,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<RegionDirectiveTriviaSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- ReturnStatementSyntax ----
 	internal static class ReturnStatementInfo
 	{
 		private static readonly SyntaxNodeProperty<ReturnStatementSyntax, SyntaxToken> ReturnKeywordProperty = new TokenProperty<ReturnStatementSyntax>("ReturnKeyword", n => n.ReturnKeyword, (n, v) => n.WithReturnKeyword(v));
@@ -3136,7 +3423,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<ReturnStatementSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- SelectClauseSyntax ----
 	internal static class SelectClauseInfo
 	{
 		private static readonly SyntaxNodeProperty<SelectClauseSyntax, SyntaxToken> SelectKeywordProperty = new TokenProperty<SelectClauseSyntax>("SelectKeyword", n => n.SelectKeyword, (n, v) => n.WithSelectKeyword(v));
@@ -3151,7 +3440,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<SelectClauseSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- ShebangDirectiveTriviaSyntax ----
 	internal static class ShebangDirectiveTriviaInfo
 	{
 		private static readonly SyntaxNodeProperty<ShebangDirectiveTriviaSyntax, SyntaxToken> HashTokenProperty = new TokenProperty<ShebangDirectiveTriviaSyntax>("HashToken", n => n.HashToken, (n, v) => n.WithHashToken(v));
@@ -3170,7 +3461,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<ShebangDirectiveTriviaSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- SimpleBaseTypeSyntax ----
 	internal static class SimpleBaseTypeInfo
 	{
 		private static readonly SyntaxNodeProperty<SimpleBaseTypeSyntax, TypeSyntax> TypeProperty = new NodeProperty<SimpleBaseTypeSyntax, TypeSyntax>("Type", n => n.Type, (n, v) => n.WithType(v));
@@ -3181,7 +3474,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<SimpleBaseTypeSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- SimpleLambdaExpressionSyntax ----
 	internal static class SimpleLambdaExpressionInfo
 	{
 		private static readonly SyntaxNodeProperty<SimpleLambdaExpressionSyntax, SyntaxToken> AsyncKeywordProperty = new TokenProperty<SimpleLambdaExpressionSyntax>("AsyncKeyword", n => n.AsyncKeyword, (n, v) => n.WithAsyncKeyword(v));
@@ -3204,7 +3499,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<SimpleLambdaExpressionSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- SizeOfExpressionSyntax ----
 	internal static class SizeOfExpressionInfo
 	{
 		private static readonly SyntaxNodeProperty<SizeOfExpressionSyntax, SyntaxToken> KeywordProperty = new TokenProperty<SizeOfExpressionSyntax>("Keyword", n => n.Keyword, (n, v) => n.WithKeyword(v));
@@ -3227,7 +3524,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<SizeOfExpressionSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- SkippedTokensTriviaSyntax ----
 	internal static class SkippedTokensTriviaInfo
 	{
 		private static readonly SyntaxNodeProperty<SkippedTokensTriviaSyntax, SyntaxTokenList> TokensProperty = new TokenListProperty<SkippedTokensTriviaSyntax>("Tokens", n => n.Tokens, (n, v) => n.WithTokens(v));
@@ -3238,7 +3537,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<SkippedTokensTriviaSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- StackAllocArrayCreationExpressionSyntax ----
 	internal static class StackAllocArrayCreationExpressionInfo
 	{
 		private static readonly SyntaxNodeProperty<StackAllocArrayCreationExpressionSyntax, SyntaxToken> StackAllocKeywordProperty = new TokenProperty<StackAllocArrayCreationExpressionSyntax>("StackAllocKeyword", n => n.StackAllocKeyword, (n, v) => n.WithStackAllocKeyword(v));
@@ -3253,7 +3554,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<StackAllocArrayCreationExpressionSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- StructDeclarationSyntax ----
 	internal static class StructDeclarationInfo
 	{
 		private static readonly SyntaxNodeProperty<StructDeclarationSyntax, SyntaxList<AttributeListSyntax>> AttributeListsProperty = new ListProperty<StructDeclarationSyntax, AttributeListSyntax>("AttributeLists", n => n.AttributeLists, (n, v) => n.WithAttributeLists(v));
@@ -3304,7 +3607,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<StructDeclarationSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- SwitchSectionSyntax ----
 	internal static class SwitchSectionInfo
 	{
 		private static readonly SyntaxNodeProperty<SwitchSectionSyntax, SyntaxList<SwitchLabelSyntax>> LabelsProperty = new ListProperty<SwitchSectionSyntax, SwitchLabelSyntax>("Labels", n => n.Labels, (n, v) => n.WithLabels(v));
@@ -3319,7 +3624,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<SwitchSectionSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- SwitchStatementSyntax ----
 	internal static class SwitchStatementInfo
 	{
 		private static readonly SyntaxNodeProperty<SwitchStatementSyntax, SyntaxToken> SwitchKeywordProperty = new TokenProperty<SwitchStatementSyntax>("SwitchKeyword", n => n.SwitchKeyword, (n, v) => n.WithSwitchKeyword(v));
@@ -3354,7 +3661,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<SwitchStatementSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- ThisExpressionSyntax ----
 	internal static class ThisExpressionInfo
 	{
 		private static readonly SyntaxNodeProperty<ThisExpressionSyntax, SyntaxToken> TokenProperty = new TokenProperty<ThisExpressionSyntax>("Token", n => n.Token, (n, v) => n.WithToken(v));
@@ -3365,7 +3674,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<ThisExpressionSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- ThrowStatementSyntax ----
 	internal static class ThrowStatementInfo
 	{
 		private static readonly SyntaxNodeProperty<ThrowStatementSyntax, SyntaxToken> ThrowKeywordProperty = new TokenProperty<ThrowStatementSyntax>("ThrowKeyword", n => n.ThrowKeyword, (n, v) => n.WithThrowKeyword(v));
@@ -3384,7 +3695,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<ThrowStatementSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- TryStatementSyntax ----
 	internal static class TryStatementInfo
 	{
 		private static readonly SyntaxNodeProperty<TryStatementSyntax, SyntaxToken> TryKeywordProperty = new TokenProperty<TryStatementSyntax>("TryKeyword", n => n.TryKeyword, (n, v) => n.WithTryKeyword(v));
@@ -3407,7 +3720,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<TryStatementSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- TypeArgumentListSyntax ----
 	internal static class TypeArgumentListInfo
 	{
 		private static readonly SyntaxNodeProperty<TypeArgumentListSyntax, SyntaxToken> LessThanTokenProperty = new TokenProperty<TypeArgumentListSyntax>("LessThanToken", n => n.LessThanToken, (n, v) => n.WithLessThanToken(v));
@@ -3426,7 +3741,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<TypeArgumentListSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- TypeConstraintSyntax ----
 	internal static class TypeConstraintInfo
 	{
 		private static readonly SyntaxNodeProperty<TypeConstraintSyntax, TypeSyntax> TypeProperty = new NodeProperty<TypeConstraintSyntax, TypeSyntax>("Type", n => n.Type, (n, v) => n.WithType(v));
@@ -3437,7 +3754,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<TypeConstraintSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- TypeCrefSyntax ----
 	internal static class TypeCrefInfo
 	{
 		private static readonly SyntaxNodeProperty<TypeCrefSyntax, TypeSyntax> TypeProperty = new NodeProperty<TypeCrefSyntax, TypeSyntax>("Type", n => n.Type, (n, v) => n.WithType(v));
@@ -3448,7 +3767,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<TypeCrefSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- TypeOfExpressionSyntax ----
 	internal static class TypeOfExpressionInfo
 	{
 		private static readonly SyntaxNodeProperty<TypeOfExpressionSyntax, SyntaxToken> KeywordProperty = new TokenProperty<TypeOfExpressionSyntax>("Keyword", n => n.Keyword, (n, v) => n.WithKeyword(v));
@@ -3471,7 +3792,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<TypeOfExpressionSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- TypeParameterConstraintClauseSyntax ----
 	internal static class TypeParameterConstraintClauseInfo
 	{
 		private static readonly SyntaxNodeProperty<TypeParameterConstraintClauseSyntax, SyntaxToken> WhereKeywordProperty = new TokenProperty<TypeParameterConstraintClauseSyntax>("WhereKeyword", n => n.WhereKeyword, (n, v) => n.WithWhereKeyword(v));
@@ -3494,7 +3817,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<TypeParameterConstraintClauseSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- TypeParameterListSyntax ----
 	internal static class TypeParameterListInfo
 	{
 		private static readonly SyntaxNodeProperty<TypeParameterListSyntax, SyntaxToken> LessThanTokenProperty = new TokenProperty<TypeParameterListSyntax>("LessThanToken", n => n.LessThanToken, (n, v) => n.WithLessThanToken(v));
@@ -3513,7 +3838,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<TypeParameterListSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- TypeParameterSyntax ----
 	internal static class TypeParameterInfo
 	{
 		private static readonly SyntaxNodeProperty<TypeParameterSyntax, SyntaxList<AttributeListSyntax>> AttributeListsProperty = new ListProperty<TypeParameterSyntax, AttributeListSyntax>("AttributeLists", n => n.AttributeLists, (n, v) => n.WithAttributeLists(v));
@@ -3532,7 +3859,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<TypeParameterSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- UndefDirectiveTriviaSyntax ----
 	internal static class UndefDirectiveTriviaInfo
 	{
 		private static readonly SyntaxNodeProperty<UndefDirectiveTriviaSyntax, SyntaxToken> HashTokenProperty = new TokenProperty<UndefDirectiveTriviaSyntax>("HashToken", n => n.HashToken, (n, v) => n.WithHashToken(v));
@@ -3555,7 +3884,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<UndefDirectiveTriviaSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- UnsafeStatementSyntax ----
 	internal static class UnsafeStatementInfo
 	{
 		private static readonly SyntaxNodeProperty<UnsafeStatementSyntax, SyntaxToken> UnsafeKeywordProperty = new TokenProperty<UnsafeStatementSyntax>("UnsafeKeyword", n => n.UnsafeKeyword, (n, v) => n.WithUnsafeKeyword(v));
@@ -3570,7 +3901,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<UnsafeStatementSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- UsingDirectiveSyntax ----
 	internal static class UsingDirectiveInfo
 	{
 		private static readonly SyntaxNodeProperty<UsingDirectiveSyntax, SyntaxToken> UsingKeywordProperty = new TokenProperty<UsingDirectiveSyntax>("UsingKeyword", n => n.UsingKeyword, (n, v) => n.WithUsingKeyword(v));
@@ -3597,7 +3930,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<UsingDirectiveSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- UsingStatementSyntax ----
 	internal static class UsingStatementInfo
 	{
 		private static readonly SyntaxNodeProperty<UsingStatementSyntax, SyntaxToken> UsingKeywordProperty = new TokenProperty<UsingStatementSyntax>("UsingKeyword", n => n.UsingKeyword, (n, v) => n.WithUsingKeyword(v));
@@ -3628,7 +3963,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<UsingStatementSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- VariableDeclarationSyntax ----
 	internal static class VariableDeclarationInfo
 	{
 		private static readonly SyntaxNodeProperty<VariableDeclarationSyntax, TypeSyntax> TypeProperty = new NodeProperty<VariableDeclarationSyntax, TypeSyntax>("Type", n => n.Type, (n, v) => n.WithType(v));
@@ -3643,7 +3980,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<VariableDeclarationSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- VariableDeclaratorSyntax ----
 	internal static class VariableDeclaratorInfo
 	{
 		private static readonly SyntaxNodeProperty<VariableDeclaratorSyntax, SyntaxToken> IdentifierProperty = new TokenProperty<VariableDeclaratorSyntax>("Identifier", n => n.Identifier, (n, v) => n.WithIdentifier(v));
@@ -3662,7 +4001,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<VariableDeclaratorSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- WarningDirectiveTriviaSyntax ----
 	internal static class WarningDirectiveTriviaInfo
 	{
 		private static readonly SyntaxNodeProperty<WarningDirectiveTriviaSyntax, SyntaxToken> HashTokenProperty = new TokenProperty<WarningDirectiveTriviaSyntax>("HashToken", n => n.HashToken, (n, v) => n.WithHashToken(v));
@@ -3681,7 +4022,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<WarningDirectiveTriviaSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- WhereClauseSyntax ----
 	internal static class WhereClauseInfo
 	{
 		private static readonly SyntaxNodeProperty<WhereClauseSyntax, SyntaxToken> WhereKeywordProperty = new TokenProperty<WhereClauseSyntax>("WhereKeyword", n => n.WhereKeyword, (n, v) => n.WithWhereKeyword(v));
@@ -3696,7 +4039,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<WhereClauseSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- WhileStatementSyntax ----
 	internal static class WhileStatementInfo
 	{
 		private static readonly SyntaxNodeProperty<WhileStatementSyntax, SyntaxToken> WhileKeywordProperty = new TokenProperty<WhileStatementSyntax>("WhileKeyword", n => n.WhileKeyword, (n, v) => n.WithWhileKeyword(v));
@@ -3723,7 +4068,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<WhileStatementSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- XmlCDataSectionSyntax ----
 	internal static class XmlCDataSectionInfo
 	{
 		private static readonly SyntaxNodeProperty<XmlCDataSectionSyntax, SyntaxToken> StartCDataTokenProperty = new TokenProperty<XmlCDataSectionSyntax>("StartCDataToken", n => n.StartCDataToken, (n, v) => n.WithStartCDataToken(v));
@@ -3742,7 +4089,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<XmlCDataSectionSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- XmlCommentSyntax ----
 	internal static class XmlCommentInfo
 	{
 		private static readonly SyntaxNodeProperty<XmlCommentSyntax, SyntaxToken> LessThanExclamationMinusMinusTokenProperty = new TokenProperty<XmlCommentSyntax>("LessThanExclamationMinusMinusToken", n => n.LessThanExclamationMinusMinusToken, (n, v) => n.WithLessThanExclamationMinusMinusToken(v));
@@ -3761,7 +4110,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<XmlCommentSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- XmlCrefAttributeSyntax ----
 	internal static class XmlCrefAttributeInfo
 	{
 		private static readonly SyntaxNodeProperty<XmlCrefAttributeSyntax, XmlNameSyntax> NameProperty = new NodeProperty<XmlCrefAttributeSyntax, XmlNameSyntax>("Name", n => n.Name, (n, v) => n.WithName(v));
@@ -3788,7 +4139,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<XmlCrefAttributeSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- XmlElementEndTagSyntax ----
 	internal static class XmlElementEndTagInfo
 	{
 		private static readonly SyntaxNodeProperty<XmlElementEndTagSyntax, SyntaxToken> LessThanSlashTokenProperty = new TokenProperty<XmlElementEndTagSyntax>("LessThanSlashToken", n => n.LessThanSlashToken, (n, v) => n.WithLessThanSlashToken(v));
@@ -3807,7 +4160,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<XmlElementEndTagSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- XmlElementStartTagSyntax ----
 	internal static class XmlElementStartTagInfo
 	{
 		private static readonly SyntaxNodeProperty<XmlElementStartTagSyntax, SyntaxToken> LessThanTokenProperty = new TokenProperty<XmlElementStartTagSyntax>("LessThanToken", n => n.LessThanToken, (n, v) => n.WithLessThanToken(v));
@@ -3830,7 +4185,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<XmlElementStartTagSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- XmlElementSyntax ----
 	internal static class XmlElementInfo
 	{
 		private static readonly SyntaxNodeProperty<XmlElementSyntax, XmlElementStartTagSyntax> StartTagProperty = new NodeProperty<XmlElementSyntax, XmlElementStartTagSyntax>("StartTag", n => n.StartTag, (n, v) => n.WithStartTag(v));
@@ -3849,7 +4206,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<XmlElementSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- XmlEmptyElementSyntax ----
 	internal static class XmlEmptyElementInfo
 	{
 		private static readonly SyntaxNodeProperty<XmlEmptyElementSyntax, SyntaxToken> LessThanTokenProperty = new TokenProperty<XmlEmptyElementSyntax>("LessThanToken", n => n.LessThanToken, (n, v) => n.WithLessThanToken(v));
@@ -3872,7 +4231,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<XmlEmptyElementSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- XmlNameAttributeSyntax ----
 	internal static class XmlNameAttributeInfo
 	{
 		private static readonly SyntaxNodeProperty<XmlNameAttributeSyntax, XmlNameSyntax> NameProperty = new NodeProperty<XmlNameAttributeSyntax, XmlNameSyntax>("Name", n => n.Name, (n, v) => n.WithName(v));
@@ -3899,7 +4260,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<XmlNameAttributeSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- XmlNameSyntax ----
 	internal static class XmlNameInfo
 	{
 		private static readonly SyntaxNodeProperty<XmlNameSyntax, XmlPrefixSyntax> PrefixProperty = new NodeProperty<XmlNameSyntax, XmlPrefixSyntax>("Prefix", n => n.Prefix, (n, v) => n.WithPrefix(v));
@@ -3914,7 +4277,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<XmlNameSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- XmlPrefixSyntax ----
 	internal static class XmlPrefixInfo
 	{
 		private static readonly SyntaxNodeProperty<XmlPrefixSyntax, SyntaxToken> PrefixProperty = new TokenProperty<XmlPrefixSyntax>("Prefix", n => n.Prefix, (n, v) => n.WithPrefix(v));
@@ -3929,7 +4294,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<XmlPrefixSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- XmlProcessingInstructionSyntax ----
 	internal static class XmlProcessingInstructionInfo
 	{
 		private static readonly SyntaxNodeProperty<XmlProcessingInstructionSyntax, SyntaxToken> StartProcessingInstructionTokenProperty = new TokenProperty<XmlProcessingInstructionSyntax>("StartProcessingInstructionToken", n => n.StartProcessingInstructionToken, (n, v) => n.WithStartProcessingInstructionToken(v));
@@ -3952,7 +4319,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<XmlProcessingInstructionSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- XmlTextAttributeSyntax ----
 	internal static class XmlTextAttributeInfo
 	{
 		private static readonly SyntaxNodeProperty<XmlTextAttributeSyntax, XmlNameSyntax> NameProperty = new NodeProperty<XmlTextAttributeSyntax, XmlNameSyntax>("Name", n => n.Name, (n, v) => n.WithName(v));
@@ -3979,7 +4348,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<XmlTextAttributeSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- XmlTextSyntax ----
 	internal static class XmlTextInfo
 	{
 		private static readonly SyntaxNodeProperty<XmlTextSyntax, SyntaxTokenList> TextTokensProperty = new TokenListProperty<XmlTextSyntax>("TextTokens", n => n.TextTokens, (n, v) => n.WithTextTokens(v));
@@ -3990,7 +4361,9 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<XmlTextSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 
+	#region ---- YieldStatementSyntax ----
 	internal static class YieldStatementInfo
 	{
 		private static readonly SyntaxNodeProperty<YieldStatementSyntax, SyntaxToken> YieldKeywordProperty = new TokenProperty<YieldStatementSyntax>("YieldKeyword", n => n.YieldKeyword, (n, v) => n.WithYieldKeyword(v));
@@ -4013,4 +4386,5 @@ namespace MedallionCodeFormatter
 
 		public static IReadOnlyList<ISyntaxNodePropertyWithTypedNode<YieldStatementSyntax>> Properties => PropertiesArray;
 	}
+	#endregion
 }
