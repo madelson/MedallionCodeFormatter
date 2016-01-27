@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MedallionCodeFormatter
 {
-    class RoslynHelpers
+    static class RoslynHelpers
     {
         public static bool IsMultiLine(SyntaxTrivia trivia)
         {
@@ -23,6 +23,20 @@ namespace MedallionCodeFormatter
                 default:
                     return trivia.ToFullString().IndexOf('\n') >= 0;
             }
+        }
+
+        public static SyntaxToken GetToken(this SyntaxNodeOrToken nodeOrToken)
+        {
+            if (!nodeOrToken.IsToken) { throw new ArgumentException("expected token", nameof(nodeOrToken)); }
+
+            return nodeOrToken.AsToken();
+        }
+
+        public static SyntaxNode GetNode(this SyntaxNodeOrToken nodeOrToken)
+        {
+            if (!nodeOrToken.IsNode) { throw new ArgumentException("expected node", nameof(nodeOrToken)); }
+
+            return nodeOrToken.AsNode();
         }
     }
 }

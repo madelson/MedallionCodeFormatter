@@ -88,6 +88,40 @@ namespace MedallionCodeFormatter
             );
         }
 
+        private TNode VisitBlockLike<TNode, TElement>(
+            TNode node,
+            Func<TNode, SyntaxToken> getOpenToken,
+            Func<TNode, SyntaxToken, TNode> withOpenToken,
+            Func<TNode, TElement> getBody,
+            Func<TNode, TElement, TNode> withBody,
+            Func<TNode, SyntaxToken> getCloseToken,
+            Func<TNode, SyntaxToken, TNode> withCloseToken,
+            bool? canDropOpenToken = null,
+            bool? canDropCloseToken = null)
+            where TNode : SyntaxNode
+            where TElement : SyntaxNode
+        {
+            bool forceBody;
+            node = this.VisitTokensOfBlockLike(
+                node,
+                getOpenToken,
+                withOpenToken,
+                n => SyntaxFactory.NodeOrTokenList(getBody(n)),
+                getCloseToken,
+                withCloseToken,
+                canDropOpenToken,
+                canDropCloseToken,
+                out forceBody
+            );
+
+            using (this.Indent())
+            {
+                node = withBody(node, this.MaybeDropAndVisit(getBody(node), forceBody));
+            }
+
+            return node;
+        }
+
         // TODO break up into three methods for each of single node body, separated body, and list body
         private TNode VisitBlockLike<TNode, TElement>(
             TNode node,
